@@ -1,68 +1,10 @@
-This project was bootstrapped with [Create React Tailwind App](https://github.com/gigincg/create-react-tailwind-app).
+# ben knize dot com
+### _A dev blog, sort of_
+This site is built with React and Tailwind — I wanted to see how well they play together. I was unimpressed with React’s theme and style bindings compared to Angular or Vue and Tailwind promised to solve those problems and promised it was more fun and useful than it seems at first glance. Notably, here's Tailwind's creator, Adam Wathan, as published on the _front page_ of tailwindcss.com:
+> I’ve written a few thousand words on why traditional “semantic class names” are the reason CSS is hard to maintain, but the truth is you’re never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way.
 
-## Available Scripts
+Hilarious, of course I have to try.
 
-In the project directory, you can run:
+Verdict: everything I’d heard about Tailwid is true. It’s verbose, ugly, scalable, and surprisingly fun. Verbosity was a pain, but React can keep you DRY by slamming classes into a new component. There’s definitely some opportunity cost to adding Tailwind to a team’s toolbox, but there’s a lot of value to distilling CSS into a non-infinite set of effects you could possibly apply to DOM. In a way, it’s its own style guide and component library at the same time.
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I won’t make a case that Tailwind should replace CSS everywhere, but it solves a lot of problems BEM tries to, by trading peer-review-hours for the cost of adopting it. I will say React/Tailwind was delightful; I felt like a kid dumping Legos onto the carpet. The best part of React is writing everything in one place, and with Tailwind you can move style composition into the same file as the rest of it.
