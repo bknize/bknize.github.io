@@ -1,7 +1,7 @@
 # ben knize dot com
-### _A dev blog, sort of_
-This site is built with React and Tailwind — I wanted to see how well they play together. I was unimpressed with React's theme and style bindings compared to Angular or Vue and Tailwind promised to solve those problems and promised it was more fun and useful than it seems at first glance. Notably, here's Tailwind's creator, Adam Wathan, as published on the _front page_ of tailwindcss.com:
-> I've written a few thousand words on why traditional “semantic class names” are the reason CSS is hard to maintain, but the truth is you're never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way.
+
+This site is built with React and Tailwind - I wanted to see how well they play together. I was unimpressed with React's theme and style bindings compared to Angular or Vue and Tailwind promised to solve those problems and promised it was more fun and useful than it seems at first glance. Notably, here's Tailwind's creator, Adam Wathan, as published on the _front page_ of tailwindcss.com:
+> I've written a few thousand words on why traditional "semantic class names" are the reason CSS is hard to maintain, but the truth is you're never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way.
 
 Hilarious, of course I have to try.
 
