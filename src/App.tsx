@@ -74,7 +74,7 @@ function App() {
       <section className="flex-auto py-20 pl-6">
       
         <Fade><h1 className="text-6xl font-serif lowercase tracking-tight text-teal-700 italic">Ben Knize</h1></Fade>
-        <Fade><h3 className="text-xl font-mono uppercase tracking-widest leading-10 text-teal-700">Designer/Developer</h3></Fade>
+        <Fade><h3 className="text-xl font-mono uppercase tracking-widest leading-10 text-teal-700">Developer/Designer</h3></Fade>
       </section>
       <section className="flex-auto flex mt-12 p-8 text-gray-100 bg-gradient-to-r from-teal-400 to-blue-400 pb-20">
         <Fade>
@@ -82,7 +82,7 @@ function App() {
             <img src={process.env.PUBLIC_URL + '/pic.jpg'} className="rounded-full" alt="Ben's handsome face." />
           </div>
           <div className="pl-8 tracking-wide leading-loose text-white">
-            <p><span className="font-serif text-4xl">Hi, I’m Ben.</span></p>
+            <p><span className="font-serif text-4xl italic">Hi, I’m Ben.</span></p>
             <p>I’m a developer, designer, and a compulsive maker of things. I like technical and experiential challenges, answering big questions, and navigating the space between art and code.</p>
             <p>I’ve worked in enterprise development, eLearning, brochure sites, multimedia installations, and more.</p>
             <p>In my free time, I write, sculpt, paint, collect, and cook. I love <Link href="https://music.apple.com/profile/bknize">music</Link>, taking board games seriously, and having another pint.</p>
@@ -94,10 +94,10 @@ function App() {
         <Fade>
           <h2 className="text-4xl text-teal-900 font-serif mt-8 italic">My blurb</h2>
           <p className="leading-loose mt-8">
-            Front-end developer with 5+ years experience designing and developing UI/UX for enterprise web apps and eLearning. My background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
+            Front-end developer with 5+ years experience designing UI/UX and developing for enterprise web apps and eLearning. My background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
           </p>
           <p className="leading-loose">
-            My resume is available <Link target="_blank" invert={ false } href={process.env.PUBLIC_URL + '/resume.pdf'}>here</Link>.
+            My resume is available <Link target="_blank" invert={ true } href={process.env.PUBLIC_URL + '/resume.pdf'}>here</Link>.
           </p>
         </Fade>
       </section>
