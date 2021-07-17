@@ -5,7 +5,6 @@ import { timeline } from './Content'
 import axios from 'axios';
 import marked from 'marked'
 import sanitizeHtml from 'sanitize-html';
-
 import './fonts.css';
 import { useState } from 'react';
 
@@ -46,16 +45,16 @@ function App() {
       .then((response: any) => {
         const renderer = new marked.Renderer()
         renderer.heading = (text, level) => `<h${level} class="text-xl font-mono uppercase tracking-widest leading-10 my-4">${text}</h${level}>`
-        renderer.paragraph = (text) => `<p class="leading-loose">${text}</p>`
-        renderer.blockquote = (text) => `<blockquote class="border-l-2 ml-2 mt-2 pl-4 p-2 border-teal-700 text-blue-400">${text}</blockquote>`
+        renderer.paragraph = (text) => `<p class="leading-loose mt-2">${text}</p>`
+        renderer.blockquote = (text) => `<blockquote class="border-l-2 ml-2 my-2 pl-4 p-2 pt-0 border-teal-700 text-blue-400">${text}</blockquote>`
 
         let decoded = atob(response.data.content)
         let parsed = marked(decoded, { renderer: renderer })
         let sanitized = sanitizeHtml(parsed, {
           allowedClasses: {
             'h1': [ 'text-xl', 'font-mono', 'uppercase', 'tracking-widest', 'leading-10', 'my-4' ],
-            'p': [ 'leading-loose' ],
-            'blockquote': [ 'border-l-2', 'p-2', 'pl-4', 'ml-2', 'mt-2', 'border-teal-700', 'text-blue-400' ]
+            'p': [ 'leading-loose', 'mt-2' ],
+            'blockquote': [ 'border-l-2', 'p-2', 'pl-4', 'ml-2', 'my-2', 'pt-0', 'border-teal-700', 'text-blue-400' ]
           }
         })
         setReadMe(sanitized)
@@ -95,7 +94,7 @@ function App() {
         <Fade>
           <h2 className="text-4xl text-teal-900 font-serif mt-8 italic">My blurb</h2>
           <p className="leading-loose mt-8">
-            Frontend developer with 5+ years experience designing and developing UI/UX in small business, enterprise, eLearning, and multimedia. Background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
+            Front-end developer with 5+ years experience designing and developing UI/UX for enterprise web apps and eLearning. My background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
           </p>
           <p className="leading-loose">
             My resume is available <Link target="_blank" invert={ false } href={process.env.PUBLIC_URL + '/resume.pdf'}>here</Link>.

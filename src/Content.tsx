@@ -3,14 +3,14 @@ export const timeline = [
       date: '2018 / Now',
       company: 'CSE Software',
       job: 'UI/UX and Front End Dev',
-      copy: `Designing, prototyping, and developing front end solutions for enterprise-scale web apps. I'm also mentoring juniors, writing standards, and picking up devops as I go.`,
+      copy: `I'm designing, prototyping, and developing front-end solutions for enterprise-scale web apps. I'm also mentoring juniors, writing standards, and picking up devops as I go.`,
       tags: ['TypeScript', 'Angular', 'React', 'Sass', 'Figma', 'Redux', 'RxJS']
     },
     {
       date: '2017 / 2018',
       company: 'CSE Software',
       job: 'Multimedia Developer',
-      copy: `Prior to joining the enterprise team, I authored and deployed industrial and medical eLearning web content on the multimedia team; maintained Wordpress and enterprise sites.`,
+      copy: `Prior to joining the enterprise team, I authored and deployed industrial and medical eLearning web content and maintained Wordpress and enterprise sites.`,
       tags: ['Vue', 'SCORM', 'Wordpress', 'Adobe Suite', 'HTML', 'CSS', 'JS', 'jQuery']
     },
     {
@@ -23,7 +23,7 @@ export const timeline = [
     {
       date: '2015',
       company: 'Silver Oaks',
-      job: 'Interactive Media and Front End Dev',
+      job: 'Interactive Media and Front-End Dev',
       copy: `Designed and coded interactive corporate expo and museum installations; built and supported small-business brochure sites, including company site.`,
       tags: ['Wordpress', 'Adobe Suite', 'HTML', 'CSS', 'jQuery', 'Python']
     },
