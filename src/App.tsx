@@ -16,10 +16,10 @@ function Link({ href, target = '_self', invert = false, children }) {
 
 function TimelineEntry({ entry }) {
   return (<Fade>
-    <div className="col-span-1 text-xl font-mono uppercase tracking-widest text-teal-700">
+    <div className="col-span-4 sm:col-span-1 text-xl font-mono uppercase tracking-widest text-teal-700">
       { entry.date }
     </div>
-    <div className="col-span-3 md:col-span-5 pl-8 tracking-wide">
+    <div className="col-span-4 sm:col-span-3 md:col-span-5 sm:pl-8 tracking-wide">
       <h3 className="font-mono uppercase text-2xl text-blue-700">
         { entry.job }
       </h3>
@@ -76,16 +76,16 @@ function App() {
         <Fade><h1 className="text-6xl font-serif lowercase tracking-tight text-teal-700 italic">Ben Knize</h1></Fade>
         <Fade><h3 className="text-xl font-mono uppercase tracking-widest leading-10 text-teal-700">Developer/Designer</h3></Fade>
       </section>
-      <section className="flex-auto flex mt-12 p-8 text-gray-100 bg-gradient-to-r from-teal-400 to-blue-400 pb-20">
+      <section className="mt-12 p-8 text-gray-100 bg-gradient-to-r from-teal-400 to-blue-400 pb-20 grid grid-cols-4 md:grid-cols-6">
         <Fade>
-          <div className="mt-20 w-24 flex-shrink-0 sm:hidden md:block">
+          <div className="col-span-4 sm:col-span-1">
             <img src={process.env.PUBLIC_URL + '/pic.jpg'} className="rounded-full" alt="Ben's handsome face." />
           </div>
-          <div className="pl-8 tracking-wide leading-loose text-white">
-            <p><span className="font-serif text-4xl italic">Hi, I’m Ben.</span></p>
-            <p>I’m a developer, designer, and a compulsive maker of things. I like technical and experiential challenges, answering big questions, and navigating the space between art and code.</p>
-            <p>I’ve worked in enterprise development, eLearning, brochure sites, multimedia installations, and more.</p>
-            <p>In my free time, I write, sculpt, paint, collect, and cook. I love <Link href="https://music.apple.com/profile/bknize">music</Link>, taking board games seriously, and having another pint.</p>
+          <div className="tracking-wide leading-loose text-white col-span-4 sm:col-span-3 md:col-span-5 sm:pl-8">
+            <p className="mb-4"><span className="font-serif text-4xl italic">Hi, I’m Ben.</span></p>
+            <p className="mb-4">I’m a developer, designer, and a compulsive maker of things. I like technical and experiential challenges, answering big questions, and navigating the space between art and code.</p>
+            <p className="mb-4">I’ve worked in enterprise development, eLearning, brochure sites, multimedia installations, and more.</p>
+            <p className="mb-4">In my free time, I write, sculpt, paint, collect, and cook. I love <Link href="https://music.apple.com/profile/bknize">music</Link>, taking board games seriously, and having another pint.</p>
             <p>You can contact me via <Link target="_blank" href="https://www.linkedin.com/in/benknize/">LinkedIn</Link> or <Link href="mailto:b.knize@gmail.com">email</Link>.</p>
           </div>
         </Fade>
@@ -94,7 +94,7 @@ function App() {
         <Fade>
           <h2 className="text-4xl text-teal-900 font-serif mt-8 italic">My blurb</h2>
           <p className="leading-loose mt-8">
-            Front-end developer with 5+ years experience designing UI/UX and developing for enterprise web apps and eLearning. My background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
+            Front-end developer with 5+ years experience designing UI/UX and developing for enterprise web apps and eLearning. My background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
           </p>
           <p className="leading-loose">
             My resume is available <Link target="_blank" invert={ true } href={process.env.PUBLIC_URL + '/resume.pdf'}>here</Link>.
@@ -113,9 +113,9 @@ function App() {
         </div>
       </section>
       <section className="mt-12 p-8 text-gray-100 bg-gradient-to-r from-teal-400 to-blue-400 pb-20">
-        <Fade><h2 className="text-4xl text-white font-serif mt-8 mb-2 italic leading-10">Dev blog, sort of</h2></Fade>
+        <Fade><h2 className="text-4xl text-white font-serif mt-8 mb-4 italic leading-10">Dev blog, sort of</h2></Fade>
         <Fade>
-            <p>This page's <Link href="https://github.com/bknize/bknize.github.io">source code</Link> is public. The README is below, courtesy of <Link href="https://docs.github.com/en/rest">GitHub's API</Link></p>
+            <p className="mb-4">This page's <Link href="https://github.com/bknize/bknize.github.io">source code</Link> is public. The README is below, courtesy of <Link href="https://docs.github.com/en/rest">GitHub's API</Link></p>
         </Fade>
       <div className="mt-8 p-4 text-teal-900 bg-gray-50" dangerouslySetInnerHTML={{__html: readMe}} />
       </section>
