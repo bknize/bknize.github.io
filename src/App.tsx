@@ -37,38 +37,6 @@ function TimelineEntry({ entry }) {
 
 
 function App() {
-  const [readMe, setReadMe] = useState('<span class="text-xl font-mono uppercase tracking-widest">Loading...</span>')
-
-  useEffect(() => {
-    axios
-      .get('https://api.github.com/repos/bknize/bknize.github.io/readme')
-      .then((response: any) => {
-        const renderer = new marked.Renderer()
-        renderer.heading = (text, level) => `<h${level} class="text-xl font-mono uppercase tracking-widest leading-10 my-4">${text}</h${level}>`
-        renderer.paragraph = (text) => `<p class="leading-loose mt-2">${text}</p>`
-        renderer.blockquote = (text) => `<blockquote class="border-l-2 ml-2 my-2 pl-4 p-2 pt-0 border-teal-700 text-blue-400">${text}</blockquote>`
-
-        let decoded = atob(response.data.content)
-        let parsed = marked(decoded, { renderer: renderer })
-        let sanitized = sanitizeHtml(parsed, {
-          allowedClasses: {
-            'h1': [ 'text-xl', 'font-mono', 'uppercase', 'tracking-widest', 'leading-10', 'my-4' ],
-            'p': [ 'leading-loose', 'mt-2' ],
-            'blockquote': [ 'border-l-2', 'p-2', 'pl-4', 'ml-2', 'my-2', 'pt-0', 'border-teal-700', 'text-blue-400' ]
-          }
-        })
-        setReadMe(sanitized)
-      })
-      .catch(function (error) {
-        if (error.response) {
-          if (error.response.status === 403) {
-            setReadMe(`<p class="leading-loose">Oops! We exceeded GitHub's rate limit. Check back in like an hour or so.</p>`)
-          } else {
-            setReadMe(`<p class="leading-loose">Oops! We got an error.`)
-          }
-        }
-      })
-  })
   return (
     <div className="container mx-auto px-10 flex flex-col justify-center">
       <section className="flex-auto py-20 pl-6">
@@ -78,7 +46,7 @@ function App() {
       </section>
       <section className="mt-12 p-8 text-gray-100 bg-gradient-to-r from-teal-400 to-blue-400 pb-20 grid grid-cols-4 md:grid-cols-6">
         <Fade>
-          <div className="col-span-4 sm:col-span-1">
+          <div className="col-span-4 sm:col-span-1 pb-8">
             <img src={process.env.PUBLIC_URL + '/pic.jpg'} className="rounded-full" alt="Ben's handsome face." />
           </div>
           <div className="tracking-wide leading-loose text-white col-span-4 sm:col-span-3 md:col-span-5 sm:pl-8">
@@ -94,10 +62,10 @@ function App() {
         <Fade>
           <h2 className="text-4xl text-teal-900 font-serif mt-8 italic">My blurb</h2>
           <p className="leading-loose mt-8">
-            Front-end developer with 5+ years experience designing UI/UX and developing for enterprise web apps and eLearning. My background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
+            Front-end developer with 7+ years experience designing UI/UX and developing for enterprise web apps and eLearning. My background in traditional print and digital media authoring informs my experience in technical architecture, complex use cases, and modern software workflows.
           </p>
           <p className="leading-loose">
-            My resume is available <Link target="_blank" invert={ true } href={process.env.PUBLIC_URL + '/resume.pdf'}>here</Link>.
+            My resume is available <Link target="_blank" invert={ true } href={'https://docs.google.com/document/d/1ts7t5eBBy1iG7k5rW2u3hiPqoOlkq9vTIDRG3YkkVyc/edit?usp=sharing'}>here</Link>.
           </p>
         </Fade>
       </section>
@@ -111,13 +79,6 @@ function App() {
           })
         }
         </div>
-      </section>
-      <section className="mt-12 p-8 text-gray-100 bg-gradient-to-r from-teal-400 to-blue-400 pb-20">
-        <Fade><h2 className="text-4xl text-white font-serif mt-8 mb-4 italic leading-10">Dev blog, sort of</h2></Fade>
-        <Fade>
-            <p className="mb-4">This page's <Link href="https://github.com/bknize/bknize.github.io">source code</Link> is public. The README is below, courtesy of <Link href="https://docs.github.com/en/rest">GitHub's API</Link></p>
-        </Fade>
-      <div className="mt-8 p-4 text-teal-900 bg-gray-50" dangerouslySetInnerHTML={{__html: readMe}} />
       </section>
       <Fade>
         <footer className="p-8 text-gray-400 text-4xl flex">

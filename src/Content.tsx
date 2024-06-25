@@ -1,9 +1,16 @@
 export const timeline = [
     {
-      date: '2018 / Now',
+      date: '2021 / Now',
+      company: 'Venminder',
+      job: 'SENIOR SOFTWARE ENGINEER',
+      copy: `Developing and maintaining a bespoke component library in partnership with UX designers, creating tooling and documentation, optimizing legacy code, architecting performant and maintainable front-end solutions for high-value features.`,
+      tags: ['TypeScript', 'Aurelia', 'Sass', 'Redux', 'RxJS']
+    },
+    {
+      date: '2018 / 2021',
       company: 'CSE Software',
       job: 'FRONT-END DEV / UX DESIGNER',
-      copy: `I'm designing, prototyping, and developing front-end solutions for enterprise-scale web apps. I'm also mentoring juniors, writing standards, and picking up devops as I go.`,
+      copy: `Designed, prototyped, and developed front-end solutions for enterprise-scale web apps. Also mentored juniors, wrote code and design standards, and helped multimedia devs out of a pickle now and then.`,
       tags: ['TypeScript', 'Angular', 'React', 'Sass', 'Figma', 'Redux', 'RxJS']
     },
     {
