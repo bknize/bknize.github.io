@@ -1,0 +1,8 @@
+{
+  "short_name": "ben knize dot com",
+  "name": "A site about ben, who is a developer.",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
