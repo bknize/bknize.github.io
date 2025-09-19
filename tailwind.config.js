@@ -10,11 +10,11 @@ module.exports = {
       'mono': ['Jost', 'sans-serif']
     },
     colors: {
-      gray: colors.blueGray,
-      teal: colors.teal,
-      blue: colors.blue,
+      neutral: colors.trueGray,
+      grey: colors.grey,
+      cool: colors.coolGray,
       white: colors.white,
-      sky: colors.sky
+      accent: colors.amber
     },
     extend: {}
   },

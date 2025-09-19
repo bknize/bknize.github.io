@@ -1,0 +1,88 @@
+{
+    "qualifications": [
+        {
+            "opener": "Decision maker able to balance multiple business and technical requirements.",
+            "copy": "Ensured health insurance claim workflows were seamless, consistent, and functional across all screen sizes, very low-power or old devices, and across both insurance provider users and end-user clients. Negotiated MVP acceptance criteria with technical SMEs and stakeholders."
+        },
+        {
+            "opener": "Agent of systems for consistent, accessible UX.",
+            "copy": "Proposed and implemented Material for desktop and mobile devices for insurance claim submission and progress-tracking app. Consulted on and implemented a bespoke in-house design system in close relationship to Product and Design teams."
+        },
+        {
+            "opener": "Experience developing, implementing, and maintaining modular UI component libraries.",
+            "copy": "Designed and built high-level components to streamline repeated user workflow patterns across a variety of frontend technologies including React, MUI, Django, Tailwind, and HTMX. Proposed and implemented a refactor of in-house component system towards smaller, declarative, and granular components to increase adoption rate among full-stack teams by focusing on developer experience."
+        },
+        {
+            "opener": "Passionate about resolving technical debt.",
+            "copy": "Groomed and authored technical and design debt backlog and advocated for debt stories in sprint planning. Planned, prioritized, and refactored UI via effective use of software design patterns, advanced state management tooling and architecture, and relying on critical thinking to prevent bugs and debt before they happen."
+        },
+        {
+            "opener": "Experience writing, implementing, and enforcing UI code standards at all layers of the SDLC.",
+            "copy": "Authored documentation, IDE and linting configs, massaged CI/CD build server tools to ensure consistent and clean Typescript, SASS style and best practices."
+        },
+        {
+            "opener": "Avid writer of documentation.",
+            "copy": "Earned reputation for prolific and thorough documentation of components, utilities, and tooling. Opinionated about Git commit style and branch strategy."
+        },
+        {
+            "opener": "Valuable ambassador to Product and Design teams.",
+            "copy": "Background in Graphic Design provided first-hand knowledge of design fundamentals and priorities, creating shared context in communicating with Product and Design teams. Routinely invited to whiteboard with designers in Figma."
+        },
+        {
+            "opener": "Influential participant in elevating the team.",
+            "copy": "Advocate for improving Agile processes and enthusiastic mentor to junior engineers."
+        }
+    ],
+    "experience": [
+        {
+            "title": "Software Design Engineer",
+            "year": "2023 - 2025",
+            "copy": "Worked across front-end technologies to provide a unified, accessible, responsive User Experience. Prototyped new features on Figma.",
+            "projects": [
+                {
+                    "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags."
+                },
+                {
+                    "copy": "Implemented a data-dense user workflow for resolving errors in user-submitted or AI-interpreted insurance claim data. Validated dynamic form inputs by international jurisdiction, created elegant CRUD operations for tabular data, and created a PDF view navigable by scrolling, zooming, or clickable hotspots linked to form inputs."
+                }
+            ],
+            "tech": ["React", "TypeScript", "MUI", "SASS"]
+        },
+        {
+            "title": "Senior Software Engineer",
+            "year": "2021 - 2023",
+            "copy": "Developed and maintained a bespoke UI component library in partnership with the UX team. Co-lead a front-end team responsible for UI quality control by organizing initiatives and reviewing pull requests in Azure Devops.",
+            "projects": [
+                {
+                    "copy": "Managed advanced CMS workflow for users to view, edit, dispatch, and analyze questionnaires and responses for corporate risk management. Used Redux to create predictable, testable, and observable UI. Created a powerful query-building interface to allow users to submit questionnaires en masse by selecting criteria from dynamic options based on role and locale."
+                }
+            ],
+            "tech": ["Aurelia", "TypeScript", "SASS"]
+        },
+        {
+            "title": "Front-End Developer",
+            "year": "2018 - 2021",
+            "copy": "Balanced multiple concurrent clients. Mentored juniors, wrote code quality and design standards. Lead a front-end team, and performed SME duties in quoting and sales meetings.",
+            "projects": [
+                {
+                    "copy": "Optimized UI for viewing and editing heavy machine service costs by implementing concurrency limits, list virtualization, async loading states, and centralized state management, allowing users to navigate an arbitrary amount of indeterminately-deeply nested records, and have their edits bubble up the hierarchy."
+                },
+                {
+                    "copy": "Updated legacy MVC apps with advanced forms via Vue.js, allowing the team to make surgical UX improvements to critical features without necessitating a rebuild of the base app."
+                }
+            ],
+            "tech": ["Vue", "Angular", "Material", "TypeScript", "SASS"]
+        },
+        {
+            "title": "Multimedia Developer",
+            "year": "2016 - 2018",
+            "copy": "Authored and deployed industrial and medical eLearning web content and maintained Wordpress marketing sites for Fortune 500 clients, operating within corporate brand guides.",
+            "projects": [
+                {
+                    "copy": "Created a micro-LMS platform to render XML, image, video, and interactive eLearning content responsively, with integrated LMS reporting via SCORM."
+                }
+            ],
+            "tech": ["Vue", "JavaScript", "CSS"]
+        }
+    ]
+}
