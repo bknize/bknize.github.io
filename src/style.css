@@ -1,3 +1,12 @@
 html, body {
-    @apply min-h-full m-0 relative bg-cool-700 font-sans;
+    @apply min-h-full m-0 relative bg-cool-700 font-sans font-normal;
+}
+.display {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: italic;
+  text-transform: lowercase;
+
+  @apply text-accent-300;
 }

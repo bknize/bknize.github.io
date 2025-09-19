@@ -1,6 +1,5 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
-import './fonts.css';
 import './style.css';
 import content from './content.json';
 import { FaChevronRight } from "react-icons/fa";
@@ -38,7 +37,7 @@ const Profession = ({ title, year, copy, projects, tech }) => (
       <div className='flex flex-col my-4 gap-4'>
         { projects.map(({ copy }) => <Project>{ copy }</Project>) }
       </div>
-      <div className='flex my-4'>{ tech.map((t) => <Tech>{ t }</Tech>) }</div>
+      <div className='flex flex-wrap my-4'>{ tech.map((t) => <Tech>{ t }</Tech>) }</div>
     </div>
   </Fade>
 )
@@ -82,15 +81,15 @@ const Skew = ({ className = defaultSkewColor, size=7, innerClassName = defaultSk
 function App() {
   return <>
     <div className='max-w-3xl mx-auto p-4'>
-      <h1 className='font-serif lowercase text-8xl mt-24 font-bold text-accent-300'>ben knize</h1>
+      <div className='mb-6 mt-24'>
+      <Skew className={`w-48 h-48 flex ${defaultSkewColor}`}>
+        <Portrait />
+      </Skew>
+      </div>
+      <h1 className='display text-8xl my-6'>ben knize</h1>
       <section className='flex my-4 gap-4'>
         <div className='flex items-center'>
           <p className='text-xl text-neutral-200'>Front-end engineer with 9+ years designing and developing UI/UX in enterprise web apps, dedicated to solving complex problems, focusing on maintainable and scalable code, prioritizing clean and enjoyable User Experience.</p>
-        </div>
-        <div>
-          <Skew className={`w-48 h-48 flex ${defaultSkewColor}`}>
-            <Portrait />
-          </Skew>
         </div>
       </section>
 
@@ -105,7 +104,7 @@ function App() {
     </div>
     <div className='w-full bg-cool-400'> 
       <div className='max-w-3xl mx-auto p-4 pb-24'>
-      <h2 className='font-serif lowercase text-6xl my-12 font-bold text-accent-300'>qualifications</h2>
+      <h2 className='display md:text-6xl text-4xl my-12'>qualifications</h2>
       <section className='flex flex-col gap-4'>
         {
           content.qualifications.map((q) => <Qualification {...q} />)
@@ -114,13 +113,13 @@ function App() {
       </div>
     </div>
     <div className='max-w-3xl mx-auto p-4 pb-24'>
-      <h2 className='font-serif lowercase text-6xl my-12 font-bold text-accent-300'>professional experience</h2>
+      <h2 className='display md:text-6xl text-4xl my-12'>professional experience</h2>
       <section className='my-4 flex flex-col gap-4 text-neutral-200'>
       {
         content.experience.map((e) => <Profession {...e} />)
       }
       </section>
-      <h2 className='font-serif lowercase text-6xl my-12 font-bold text-accent-300'>education</h2>
+      <h2 className='display md:text-6xl text-4xl my-12'>education</h2>
       <Fade>
         <div className='my-4'>
           <h3 className='font-mono font-extrabold text-2xl text-accent-300 my-2'>
