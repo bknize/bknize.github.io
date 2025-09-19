@@ -11,7 +11,6 @@ module.exports = {
     },
     colors: {
       neutral: colors.trueGray,
-      grey: colors.grey,
       cool: colors.coolGray,
       white: colors.white,
       accent: colors.amber

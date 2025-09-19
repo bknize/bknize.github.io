@@ -54,7 +54,7 @@
             "copy": "Developed and maintained a bespoke UI component library in partnership with the UX team. Co-lead a front-end team responsible for UI quality control by organizing initiatives and reviewing pull requests in Azure Devops.",
             "projects": [
                 {
-                    "copy": "Managed advanced CMS workflow for users to view, edit, dispatch, and analyze questionnaires and responses for corporate risk management. Used Redux to create predictable, testable, and observable UI. Created a powerful query-building interface to allow users to submit questionnaires en masse by selecting criteria from dynamic options based on role and locale."
+                    "copy": "Managed advanced CMS workflow for users to CRUD and analyze questionnaires and responses; flagship product in vendor risk management suite. Used Redux to create predictable, testable, and observable UI. Created a powerful query-building interface for batch operations, optimized/virtualized to handle upwards of 400k+ records concurrently.  Built in Aurelia, TypeScript, and SASS."
                 }
             ],
             "tech": ["Aurelia", "TypeScript", "SASS"]
