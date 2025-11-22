@@ -1,0 +1,34 @@
+.transition-container {
+    @apply -z-10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.transition-layer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-2%);
+    height: 100%;
+    /* our sprite is composed of 25 frames */
+    width: 2500%;
+    background-size: 100% 100%;
+
+    animation: ink-sequence 0.8s steps(24);
+    animation-fill-mode: forwards;
+}
+/* .transition-layer__opening {
+  animation: ink-sprite 0.8s steps(24);
+  animation-fill-mode: forwards;
+} */
+
+@keyframes ink-sequence {
+  0% {
+    transform: translateY(-50%) translateX(-2%);
+  }
+  100% {
+    transform: translateY(-50%) translateX(-98%);
+  }
+}
