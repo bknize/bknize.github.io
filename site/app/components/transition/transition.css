@@ -15,9 +15,10 @@
     /* our sprite is composed of 25 frames */
     width: 2500%;
     background-size: 100% 100%;
-
-    animation: ink-sequence 0.8s steps(24);
     animation-fill-mode: forwards;
+    &.__animate-in {
+      animation: ink-sequence 0.8s steps(24);
+    }
 }
 /* .transition-layer__opening {
   animation: ink-sprite 0.8s steps(24);

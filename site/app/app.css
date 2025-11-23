@@ -163,6 +163,4 @@
 
 @custom-variant mobile (@media (max-width: 767px));
 
-html, body {
-  @apply h-full bg-amber-50 relative -z-20;
-}
+@import "./style/base.css";

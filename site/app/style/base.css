@@ -1,0 +1,24 @@
+html, body {
+  @apply h-full bg-amber-50 relative -z-20;
+}
+
+section {
+  @apply outline-4 -outline-offset-24 p-12 outline-cyan-800 min-h-screen;
+}
+
+h1 {
+  @apply font-heading-1 text-heading-1;
+
+  &.__display {
+    @apply text-9xl uppercase;
+  }
+}
+h2 {
+    @apply font-heading-2 text-heading-2;
+}
+h3 {
+    @apply font-heading-3 text-heading-3;
+    &.__display {
+        @apply text-5xl uppercase tracking-wider;
+    }
+}

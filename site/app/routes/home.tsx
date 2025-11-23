@@ -1,6 +1,7 @@
-import Transition from "~/transition";
+import Transition from "~/components/transition/transition";
 import type { Route } from "./+types/home";
-import Container from "~/container";
+import Container from "~/components/container";
+import Section from "~/components/section";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -12,9 +13,18 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return <>
     <Container>
-      <div style={{height: '5000px'}} className="z-10">
-        this el is 5000px tall
-      </div>
+        <Section>
+          <h1 className="__display">Ben Knize</h1>
+          <h3 className="__display">Frontend Developer</h3>
+        </Section>
+        <Section>
+          <h1 className="__display">Ben Knize</h1>
+          <h3 className="__display">Frontend Developer</h3>
+        </Section>
+        <Section>
+          <h1 className="__display">Ben Knize</h1>
+          <h3 className="__display">Frontend Developer</h3>
+        </Section>
     </Container>
     <Transition/>
   </>;

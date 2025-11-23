@@ -2,8 +2,9 @@ import { useState, useEffect, useRef, type RefObject } from "react";
 const frameProportion = 1.78; //png frame aspect ratio
 const frames = 25; //number of png frames
   
-function useTransitionResize(ref: RefObject<HTMLElement | null>) {
+export default function useAspectResize(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
+    console.log(ref)
     const resize = () => {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
@@ -33,5 +34,3 @@ function useTransitionResize(ref: RefObject<HTMLElement | null>) {
     return () => window.removeEventListener("resize", resize);
   }, []);
 }
-
-export default useTransitionResize;
