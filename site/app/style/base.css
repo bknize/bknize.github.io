@@ -3,7 +3,7 @@ html, body {
 }
 
 section {
-  @apply outline-4 -outline-offset-24 p-12 outline-cyan-800 min-h-screen;
+  @apply p-12 min-h-screen;
 }
 
 h1 {
@@ -15,10 +15,16 @@ h1 {
 }
 h2 {
     @apply font-heading-2 text-heading-2;
+    &.__display {
+        @apply text-6xl uppercase;
+    }
 }
 h3 {
     @apply font-heading-3 text-heading-3;
     &.__display {
         @apply text-5xl uppercase tracking-wider;
     }
+}
+p {
+  @apply font-body text-base;
 }

@@ -1,0 +1,67 @@
+export const copy = {
+  body: [
+    `Hi, I'm Ben. I'm a frontend developer with 9+ years experience
+    solving technical and experiential problems. I know a bunch of 
+    different tools and have worn a lot of hats.
+    `,
+    `I work in enterprise-scale web apps for industrial, medical, 
+    and commercial markets.
+    `,
+    `I love music and I'm also a pretty good cook.
+    `
+  ],
+  experience: [{
+            "title": "Software Design Engineer",
+            "year": "2024 - 2025",
+            "copy": "Worked across front-end technologies to provide a unified, accessible, responsive User Experience. Prototyped new features on Figma.",
+            "projects": [
+                {
+                    "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags."
+                },
+                {
+                    "copy": "Implemented a data-dense user workflow for resolving errors in user-submitted or AI-interpreted insurance claim data. Validated dynamic form inputs by international jurisdiction, created elegant CRUD operations for tabular data, and created a PDF view navigable by scrolling, zooming, or clickable hotspots linked to form inputs."
+                }
+            ],
+            "tech": ["React", "TypeScript", "MUI", "SASS"]
+        },
+        {
+            "title": "Senior Frontend Engineer",
+            "year": "2021 - 2024",
+            "copy": "Developed and maintained a bespoke UI component library in partnership with the UX team. Co-lead a front-end team responsible for UI quality control by organizing initiatives and reviewing pull requests in Azure Devops.",
+            "projects": [
+                {
+                    "copy": "Managed advanced CMS workflow for users to CRUD and analyze questionnaires and responses; flagship product in vendor risk management suite. Used Redux to create predictable, testable, and observable UI. Created a powerful query-building interface for batch operations, optimized/virtualized to handle upwards of 400k+ records concurrently.  Built in Aurelia, TypeScript, and SASS."
+                },
+                {
+                    "copy": "Actually talk about the component library"
+                }
+            ],
+            "tech": ["Aurelia", "TypeScript", "SASS"]
+        },
+        {
+            "title": "Frontend Developer",
+            "year": "2018 - 2021",
+            "copy": "Balanced multiple concurrent clients. Mentored juniors, wrote code quality and design standards. Lead a front-end team, and performed SME duties in quoting and sales meetings.",
+            "projects": [
+                {
+                    "copy": "Optimized UI for viewing and editing heavy machine service costs by implementing concurrency limits, list virtualization, async loading states, and centralized state management, allowing users to navigate an arbitrary amount of indeterminately-deeply nested records, and have their edits bubble up the hierarchy."
+                },
+                {
+                    "copy": "Updated legacy MVC apps with advanced forms via Vue.js, allowing the team to make surgical UX improvements to critical features without necessitating a rebuild of the base app."
+                }
+            ],
+            "tech": ["Vue", "Angular", "Material", "TypeScript", "SASS"]
+        },
+        {
+            "title": "Multimedia Developer",
+            "year": "2016 - 2018",
+            "copy": "Authored and deployed industrial and medical eLearning web content and maintained Wordpress marketing sites for Fortune 500 clients, operating within corporate brand guides.",
+            "projects": [
+                {
+                    "copy": "Created a micro-LMS platform to render XML, image, video, and interactive eLearning content responsively, with integrated LMS reporting via SCORM."
+                }
+            ],
+            "tech": ["Vue", "JavaScript", "CSS"]
+        }
+    ]
+}

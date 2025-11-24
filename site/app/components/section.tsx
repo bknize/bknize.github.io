@@ -1,25 +1,30 @@
-import { useEffect, useRef } from "react"
-import ink from 'src/animation/ink.png';
+import { useEffect, useRef, useState } from "react"
 import useElementOnScreen from "~/hooks/useElementOnScreen";
-import { transitionBus } from "./transition/transitionBus";
+import Transition from "./transition/transition";
+import TransitionHelper from "./transition/transitionHelper";
 
-export default function Section({ children }: any, sprite: any = ink) {
+export default function Section({ children, className = '', sprite = '' }: { children: any; className?: string; sprite?: string }) {
   const [containerRef, isVisible] = useElementOnScreen({
     root: null,
     rootMargin: '0px',
-    threshold: 0.7,
+    threshold: 1,
   })
+  const [animation, setAnimation] = useState({ isAnimating: false, sprite: '' })
 
   useEffect(() => {
-    transitionBus.animate({
-      isVisible, sprite
-    })
+    if (isVisible && !!sprite) {
+      setAnimation({
+          isAnimating: true,
+          sprite
+      })
+    }
   }, [isVisible])
   
-  return <section ref={containerRef}
-    className="flex flex-col items-center justify-center">
-      { isVisible ? 'yes' : 'no' }
-    { children }
+  return <section
+    className={`relative border ${className}`}>
+      <TransitionHelper ref={containerRef} />
+      { children }
+    <Transition { ...{ ...animation, isVisible }} />
   </section>
 
 }
