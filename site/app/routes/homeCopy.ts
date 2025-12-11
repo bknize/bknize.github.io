@@ -63,5 +63,39 @@ export const copy = {
             ],
             "tech": ["Vue", "JavaScript", "CSS"]
         }
-    ]
+    ],
+    "qualifications": [
+            {
+                "opener": "Decision maker able to balance multiple business and technical requirements.",
+                "copy": "Ensured health insurance claim workflows were seamless, consistent, and functional across all screen sizes, very low-power or old devices, and across both insurance provider users and end-user clients. Negotiated MVP acceptance criteria with technical SMEs and stakeholders."
+            },
+            {
+                "opener": "Agent of systems for consistent, accessible UX.",
+                "copy": "Proposed and implemented Material for desktop and mobile devices for insurance claim submission and progress-tracking app. Consulted on and implemented a bespoke in-house design system in close relationship to Product and Design teams."
+            },
+            {
+                "opener": "Experience developing, implementing, and maintaining modular UI component libraries.",
+                "copy": "Designed and built high-level components to streamline repeated user workflow patterns across a variety of frontend technologies including React, MUI, Django, Tailwind, and HTMX. Proposed and implemented a refactor of in-house component system towards smaller, declarative, and granular components to increase adoption rate among full-stack teams by focusing on developer experience."
+            },
+            {
+                "opener": "Passionate about resolving technical debt.",
+                "copy": "Groomed and authored technical and design debt backlog and advocated for debt stories in sprint planning. Planned, prioritized, and refactored UI via effective use of software design patterns, advanced state management tooling and architecture, and relying on critical thinking to prevent bugs and debt before they happen."
+            },
+            {
+                "opener": "Experience writing, implementing, and enforcing UI code standards at all layers of the SDLC.",
+                "copy": "Authored documentation, IDE and linting configs, massaged CI/CD build server tools to ensure consistent and clean Typescript, SASS style and best practices."
+            },
+            {
+                "opener": "Avid writer of documentation.",
+                "copy": "Earned reputation for prolific and thorough documentation of components, utilities, and tooling. Opinionated about Git commit style and branch strategy."
+            },
+            {
+                "opener": "Valuable ambassador to Product and Design teams.",
+                "copy": "Background in Graphic Design provided first-hand knowledge of design fundamentals and priorities, creating shared context in communicating with Product and Design teams. Routinely invited to whiteboard with designers in Figma."
+            },
+            {
+                "opener": "Influential participant in elevating the team.",
+                "copy": "Advocate for improving Agile processes and enthusiastic mentor to junior engineers."
+            }
+        ],
 }

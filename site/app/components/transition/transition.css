@@ -23,10 +23,12 @@
 .transition-helper {
   @apply -z-10;
   position: absolute;
-  height: 1px;
-  width: 1px;
+  height: 100px;
+  width: 100px;
   top: 30vh;
   left: 0;
+  border: 2px solid blue;
+  
 }
 /* .transition-layer__opening {
   animation: ink-sprite 0.8s steps(24);

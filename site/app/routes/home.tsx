@@ -1,24 +1,36 @@
-import type { Route } from "./+types/home";
-import Section from "~/components/section";
 import ink from 'src/animation/ink.png';
 import { copy } from "./homeCopy";
+import Routes from "~/routes";
+import Title from "~/components/title-text/Title";
+import Subtitle from "~/components/title-text/Subtitle";
+import Section from '~/components/section';
+import { useRef, useState } from 'react';
+import PaintSplatter from '~/components/transition/PaintSplatter';
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+const titleColor = 'rgb(255, 251, 235)'
+const homePaint = '#7D0047'
+const experiencePaint = '#32C0CC'
+const qualificationPaint = '#FFDE00'
+const footerPaint = '#F0094'
 
 export default function Home() {
-  return <>
-    <Section className="outline-4 -outline-offset-24 outline-cyan-800">
-      <h1 className="__display">Ben Knize</h1>
-      <h3 className="__display">Frontend Developer</h3>
+  const [paint, setPaint] = useState(homePaint);
+  const titleSection = useRef<HTMLElement | null>(null);
+  const experienceSection = useRef<HTMLElement | null>(null);
+  const qualificationSection = useRef<HTMLElement | null>(null);
+  const footerSection = useRef<HTMLElement | null>(null);
 
-    </Section>
-    <Section sprite={ink}>
-      <h2 className="__display">Hello</h2>
+  return <>
+
+    <Section sprite={ink} paint={homePaint} ref={titleSection}>
+      <Title fill={ titleColor } className="h-40 w-auto my-2"/>
+
+      <Subtitle fill={ titleColor } className="h-20 w-auto my-2" />
+      <nav>
+        <a href="/">Home</a>
+        {/* <a href="/about">About</a> */}
+        <a>Experience</a>
+      </nav>
       <p className="mt-12">
         {copy.body[0]}
       </p>
@@ -30,11 +42,13 @@ export default function Home() {
       <p>
         {copy.body[2]}
       </p>
-      <button>Contact Me</button>
+      <h2>Contact Me</h2>
+      <button>linkedin</button>
+      <button>email</button>
     </Section>
-    <Section sprite={ink}>
-      <h2 className="__display">Professional Experience</h2>
-      {copy.experience.map((job) => (<>
+    <Section sprite={ink} ref={experienceSection} paint={experiencePaint}>
+      <h2>Professional Experience</h2>
+      {/* {copy.experience.map((job) => (<>
         <h1>{job.title}</h1>
         <h2>{job.year}</h2>
         <p>{job.copy}</p>
@@ -44,11 +58,16 @@ export default function Home() {
         <ul>
           {job.tech.map((tag) => (<li>{tag}</li>))}
         </ul>
-      </>))}
+      </>))} */}
     </Section>
-    <Section sprite={ink}>
-      <h1 className="__display">Ben Knize</h1>
-      <h3 className="__display">Frontend Developer</h3>
+    <Section sprite={ink} ref={qualificationSection} paint={qualificationPaint}>
+      <h2>Qualifications</h2>
+
     </Section>
+    <Section sprite={ink} ref={footerSection} paint={ footerPaint }>
+      <h2>Qualifications</h2>
+
+    </Section>
+    <PaintSplatter watch={[{ ref: titleSection, sprite: ink, paint: homePaint }]} />
   </>;
 }
