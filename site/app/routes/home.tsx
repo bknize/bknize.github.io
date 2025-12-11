@@ -3,15 +3,15 @@ import { copy } from "./homeCopy";
 import Routes from "~/routes";
 import Title from "~/components/title-text/Title";
 import Subtitle from "~/components/title-text/Subtitle";
-import Section from '~/components/section';
 import { useRef, useState } from 'react';
 import PaintSplatter from '~/components/transition/PaintSplatter';
+import Section from '~/components/Section';
 
 const titleColor = 'rgb(255, 251, 235)'
 const homePaint = '#7D0047'
 const experiencePaint = '#32C0CC'
 const qualificationPaint = '#FFDE00'
-const footerPaint = '#F0094'
+const footerPaint = '#FF0094'
 
 export default function Home() {
   const [paint, setPaint] = useState(homePaint);
@@ -68,6 +68,6 @@ export default function Home() {
       <h2>Qualifications</h2>
 
     </Section>
-    <PaintSplatter watch={[{ ref: titleSection, sprite: ink, paint: homePaint }]} />
+    <PaintSplatter />
   </>;
 }
