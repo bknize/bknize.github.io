@@ -2,24 +2,28 @@ html, body {
   @apply h-full relative -z-20 bg-neutral-950;
 }
 
+html {
+  scroll-snap-type: y mandatory;
+}
+
 body {
-  @apply p-6;
+  @apply px-6 flex flex-row;
 }
 
 section {
-  @apply min-h-screen;
-}
+  @apply min-h-screen flex;
 
+  scroll-snap-align: start;
+
+}
+.section-content {
+  /* @apply gr; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 main {
-  @apply border-2 border-amber-50 h-full w-full text-amber-50 overflow-auto overflow-x-hidden p-4;
 }
 
-nav {
-  @apply my-8 flex flex-col gap-4;
-  a {
-    @apply text-amber-50 hover:text-amber-200 font-body-bold;
-  }
-}
 
 p {
   @apply font-body text-base;

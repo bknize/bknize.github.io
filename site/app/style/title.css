@@ -1,0 +1,26 @@
+.title-container {
+    @apply fixed mt-6 transition duration-100 ease-in-out;
+
+    .title-text {
+        @apply h-10 sm:h-20 w-auto transition duration-50 ease-out delay-75;
+    }
+
+    .subtitle-text {
+        @apply h-6 sm:h-14 w-auto mt-2 transition duration-250 ease-out delay-75;
+    }
+
+
+    &.__active {
+        /* @apply max-w-1/2; */
+    }
+    &.__inactive {
+        @apply rotate-90;
+        .title-text {
+            @apply sm:scale-250 sm:translate-x-100 sm:translate-y-55;
+        }
+
+        .subtitle-text {
+            @apply sm:scale-250 sm:translate-x-70 sm:translate-y-20;
+        }
+    }
+}

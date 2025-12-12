@@ -15,6 +15,7 @@ type PaintUpdate = (section: WatchSection) => void
 class PaintState {
   freshCoat: PaintUpdate | undefined;
   currentPaint: string = '';
+  skip = true;
 
   constructor() {
 
@@ -24,7 +25,11 @@ class PaintState {
   }
   sectionEnters(section: WatchSection) {
     console.log(section, 'enters')
-    this.freshCoat?.(section)
+    if (!this.skip) {
+      this.freshCoat?.(section)
+    } else {
+      this.skip = false;
+    }
   }
   sectionExits(section: WatchSection) {
     console.log(section, 'exits')
@@ -43,8 +48,8 @@ export default function PaintSplatter() {
 
   /**
    * this callback is how we get state out of the event bus. we need to:
-   * - debounce the freshCoat func
-   * - when the debounce ends we take the most recent color and paint it beneath the animation
+   * x debounce the freshCoat func
+   * x when the debounce ends we take the most recent color and paint it beneath the animation
    * - add two more splatters
    * - select them randomly when you scroll or transition routes
    * - the bus only needs methods for non-section animating and the paint callback will do the rest
