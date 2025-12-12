@@ -14,8 +14,9 @@ type PaintUpdate = (section: WatchSection) => void
 
 class PaintState {
   freshCoat: PaintUpdate | undefined;
-  currentPaint: string = '';
+  currentSection: WatchSection | null = null;
   skip = true;
+  observers = []
 
   constructor() {
 
@@ -23,16 +24,21 @@ class PaintState {
   register(freshCoat: PaintUpdate) {
     this.freshCoat = debounce(freshCoat, 250);
   }
+
   sectionEnters(section: WatchSection) {
-    console.log(section, 'enters')
-    if (!this.skip) {
-      this.freshCoat?.(section)
+    if (section.name === 'title' && this.skip) {
+      this.skip = false;
     } else {
+      this.freshCoat?.(section)
+      this.setSection(section)
       this.skip = false;
     }
   }
-  sectionExits(section: WatchSection) {
-    console.log(section, 'exits')
+  setSection(section: WatchSection | null) {
+    this.currentSection = section;
+  }
+  getSection() {
+    return this.currentSection;
   }
 }
 
@@ -42,7 +48,6 @@ export default function PaintSplatter() {
   const container = useRef(null);
   const [watch, setWatch] = useState<WatchSection | null>(null);
   const [isAnimating, setIsAnimating] = useState(false)
-  console.log(watch?.paint)
 
   useAspectResize(container);
 
@@ -55,7 +60,6 @@ export default function PaintSplatter() {
    * - the bus only needs methods for non-section animating and the paint callback will do the rest
    */
   const paintCallback: PaintUpdate = useCallback((watch) => {
-    // console.log('callback', watch, watch.paint)
     setWatch(watch)
     setIsAnimating(true)
     setTimeout(() => setIsAnimating(false), 1000)

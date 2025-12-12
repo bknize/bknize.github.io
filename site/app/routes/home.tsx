@@ -9,6 +9,7 @@ import PaintSplatter from '~/components/transition/PaintSplatter';
 import Section from '~/components/Section';
 import TitleContainer from '~/components/title-text/TitleContainer';
 import TitleSection from '~/components/TitleSection';
+import Portrait from '~/components/Portrait';
 
 const titlePaint = 'rgb(12, 10, 9)'
 const aboutPaint = '#7D0047'
@@ -19,25 +20,16 @@ const footerPaint = '#FF0094'
 export default function Home() {
   return <>
     <TitleSection sprite={ink} paint={titlePaint} />
-    <Section name="about" title="001 About" sprite={ink} paint={aboutPaint}>
-      <div className='section-content--sidebar'>
-        <img src={ portrait } />
+    <Section name="about" title="001 About" sprite={ink} paint={aboutPaint} className='flex flex-col sm:flex-row'>
+      <div className='flex items-center'>
+        <Portrait paint={aboutPaint} className='ml-10 w-60 h-auto outline-2 outline-offset-6 outline-amber-50' />
       </div>
-      <div className='section-content--main'>
-        <p className="mt-12">
-          {copy.body[0]}
-        </p>
-        <button>Professional Experience</button>
-        <p>
-          {copy.body[1]}
-        </p>
-        <button>Case Studies</button>
-        <p>
-          {copy.body[2]}
-        </p>
-        <h2>Contact Me</h2>
-        <button>linkedin</button>
-        <button>email</button>
+      <div className='flex items-center p-6 font-body text-amber-50'>
+        <div>
+          <h2 className='text-8xl'>Hi</h2>
+          <p>I'm a frontend developer with 9+ years in design, engineering, UI & UX.</p>
+
+        </div>
       </div>
       
     </Section>
@@ -45,21 +37,21 @@ export default function Home() {
         <div className='col-span-2'>
           <h2>Qualifications</h2>
         </div>
-        {copy.experience.map((job) => (<>
+        {copy.experience.map((job, i) => (<div key={`${job.year}-${i}`}>
           <div className=''>
             <h1>{job.title}</h1>
             <h2>{job.year}</h2>
           </div>
           <div className=''>
             <p>{job.copy}</p>
-            {job.projects.map((project) => (<>
+            {job.projects.map((project, i) => (<div key={`${project.copy.substring(0, 5)}-${i}`}>
               <p>{project.copy}</p>
-            </>))}
+            </div>))}
             <ul>
-              {job.tech.map((tag) => (<li>{tag}</li>))}
+              {job.tech.map((tag, i) => (<li key={`${tag}-${i}`}>{tag}</li>))}
             </ul>
           </div>
-        </>))}
+        </div>))}
 
     </Section>
     <Section name="qualification" title="003 Qualification" sprite={ink} paint={qualificationPaint}>

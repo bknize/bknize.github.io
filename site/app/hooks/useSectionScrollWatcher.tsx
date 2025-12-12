@@ -10,8 +10,8 @@ type MarginType = MarginValue | `${MarginValue} ${MarginValue}` | `${MarginValue
 
 const useSectionScrollWatcher = ({ margin = '-200px 0px -200px 0px', ...section }: WatchSection & { margin?: MarginType }) => {
     const isInView = useInView(section.ref, { margin });
-    const wasInView = useRef(isInView);  
-    const [isVisible, setIsVisible] = useState(false)
+    const wasInView = useRef(isInView); 
+    const [isVisible, setIsVisible] = useState(true)
 
     useEffect(() => {
             const currentValue = isInView;
@@ -21,7 +21,6 @@ const useSectionScrollWatcher = ({ margin = '-200px 0px -200px 0px', ...section 
                 SplatterBus.sectionEnters(section)
                 setIsVisible(true)
             } else if (!currentValue && previousValue) {
-                SplatterBus.sectionExits(section)
                 setIsVisible(false)
             }
 

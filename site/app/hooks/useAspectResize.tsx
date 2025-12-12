@@ -4,7 +4,6 @@ const frames = 25; //number of png frames
   
 export default function useAspectResize(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
-    console.log(ref)
     const resize = () => {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;

@@ -7,19 +7,14 @@ html {
 }
 
 body {
-  @apply px-6 flex flex-row;
+  @apply flex;
 }
 
 section {
-  @apply min-h-screen flex;
+  @apply min-h-screen flex outline-2 outline-solid outline-amber-50 -outline-offset-16;
 
   scroll-snap-align: start;
 
-}
-.section-content {
-  /* @apply gr; */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 main {
 }
