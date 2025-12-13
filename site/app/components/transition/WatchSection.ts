@@ -1,7 +1,7 @@
 import type { RefObject } from "react"
 
 export type WatchSection = {
-    name: string,
+  name: string,
   ref: RefObject<HTMLElement | null>,
   sprite: string,
   paint: string

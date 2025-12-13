@@ -25,10 +25,15 @@ export default function Home() {
         <Portrait paint={aboutPaint} className='ml-10 w-60 h-auto outline-2 outline-offset-6 outline-amber-50' />
       </div>
       <div className='flex items-center p-6 font-body text-amber-50'>
-        <div>
+        <div className='max-w-120'>
           <h2 className='text-8xl'>Hi</h2>
-          <p>I'm a frontend developer with 9+ years in design, engineering, UI & UX.</p>
-
+          <p>I'm a frontend engineer with 9+ years in design, development, UI & UX. I work in a lot of tools, and wear a lot of hats.</p>
+          <p>I've worked in behemoth enterprise teams and lean SAAS startups. I like happy users and maintainable code.</p>
+          <nav className='mt-6 flex flex-row gap-3 flex-wrap'>
+            <a className='outline-2 outline-amber-50 px-3 py-1.5 font-heading-1 uppercase bg-transparent hover:bg-neutral-400 transition duration-300 ease-in-out'>Qualifications</a>
+            <a className='outline-2 outline-amber-50 px-3 py-1.5 font-heading-1 uppercase bg-transparent hover:bg-neutral-400 transition duration-300 ease-in-out'>Work Experience</a>
+            <a className='outline-2 outline-amber-50 px-3 py-1.5 font-heading-1 uppercase bg-transparent hover:bg-neutral-400 transition duration-300 ease-in-out'>Case Studies</a>
+          </nav>
         </div>
       </div>
       

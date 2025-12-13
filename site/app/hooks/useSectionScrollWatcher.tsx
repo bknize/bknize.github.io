@@ -1,6 +1,6 @@
 import { useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { SplatterBus } from "~/components/transition/PaintSplatter";
+import { splatterBus2 } from "~/components/transition/PaintSplatter";
 import type { WatchSection } from "~/components/transition/WatchSection";
 
 /* stolen from motion/react */
@@ -18,7 +18,7 @@ const useSectionScrollWatcher = ({ margin = '-200px 0px -200px 0px', ...section 
             const previousValue = wasInView.current;
 
             if (currentValue && !previousValue) {
-                SplatterBus.sectionEnters(section)
+                splatterBus2.setSection(section)
                 setIsVisible(true)
             } else if (!currentValue && previousValue) {
                 setIsVisible(false)

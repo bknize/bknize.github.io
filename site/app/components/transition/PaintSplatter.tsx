@@ -1,79 +1,37 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import useAspectResize from '../../hooks/useAspectResize';
 import './transition.css'
-import type { WatchSection } from './WatchSection';
-import { debounce } from '~/utils/debounce';
+import SplatterBus2 from '~/utils/splatterState';
+import { observer } from 'mobx-react-lite';
 
-const usePaintState = (freshCoat: PaintUpdate) => {
-  return useEffect(() => {
-    SplatterBus.register(freshCoat)
-  }, [])
-}
+export const splatterBus2 = new SplatterBus2
 
-type PaintUpdate = (section: WatchSection) => void
-
-class PaintState {
-  freshCoat: PaintUpdate | undefined;
-  currentSection: WatchSection | null = null;
-  skip = true;
-  observers = []
-
-  constructor() {
-
-  }
-  register(freshCoat: PaintUpdate) {
-    this.freshCoat = debounce(freshCoat, 250);
-  }
-
-  sectionEnters(section: WatchSection) {
-    if (section.name === 'title' && this.skip) {
-      this.skip = false;
-    } else {
-      this.freshCoat?.(section)
-      this.setSection(section)
-      this.skip = false;
-    }
-  }
-  setSection(section: WatchSection | null) {
-    this.currentSection = section;
-  }
-  getSection() {
-    return this.currentSection;
-  }
-}
-
-export const SplatterBus = new PaintState()
-
-export default function PaintSplatter() {
+const PaintSplatter = observer(() => {
   const container = useRef(null);
-  const [watch, setWatch] = useState<WatchSection | null>(null);
   const [isAnimating, setIsAnimating] = useState(false)
+  const firstSplatter = useRef(true);
+
+  const { sprite, paint, name } = splatterBus2.section
 
   useAspectResize(container);
-
-  /**
-   * this callback is how we get state out of the event bus. we need to:
-   * x debounce the freshCoat func
-   * x when the debounce ends we take the most recent color and paint it beneath the animation
-   * - add two more splatters
-   * - select them randomly when you scroll or transition routes
-   * - the bus only needs methods for non-section animating and the paint callback will do the rest
-   */
-  const paintCallback: PaintUpdate = useCallback((watch) => {
-    setWatch(watch)
-    setIsAnimating(true)
-    setTimeout(() => setIsAnimating(false), 1000)
-  }, [])
-  usePaintState(paintCallback)
-
-
-  const isVisible = false;
-  // const isAnimating = false;
+  useEffect(() => {
+    if (!!name && !!paint) {
+      if (firstSplatter.current && name === 'title') {
+        firstSplatter.current = false;
+      } else {
+      setIsAnimating(true)
+      setTimeout(() => setIsAnimating(false), 1000)
+      }
+    }
+  }, [name])
   
-
-    return <div className={`transition-container ${isVisible ? '__visible' : ''}`} style={{backgroundColor: watch?.paint}}>
-            <div ref={container} style={{backgroundImage: `url("${watch?.sprite}")`}}
+    return <div className={`transition-container`} style={{
+        backgroundColor: paint,
+      }}>
+            <div ref={container} style={{backgroundImage: `url("${sprite}")`}}
                 className={`transition-layer ${isAnimating ? '__animate': '' }`}
                 ></div>
         </div>
-}
+})
+
+export default PaintSplatter
