@@ -8,8 +8,6 @@ import { splatterBus2 } from "./transition/PaintSplatter";
 import { observer } from "mobx-react-lite";
 
 const titleColor = 'rgb(255, 251, 235)'
-// const titlePaint = 'rgb(68, 64, 60)'
-// const name = 'title'
 
 const TitleSection = observer(({ sprite, paint }: Partial<WatchSection>) => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -23,7 +21,6 @@ const TitleSection = observer(({ sprite, paint }: Partial<WatchSection>) => {
     margin: '-60% 0px 0px 0px' 
   });
 
-  console.log(isOnScreen, name )
   const titlePage = isOnScreen && (name === 'title' || name === '')
 
   if (titlePage) {
@@ -37,7 +34,6 @@ const TitleSection = observer(({ sprite, paint }: Partial<WatchSection>) => {
       fill: 'transparent',
       stroke: titleColor,
       strokeWidth: '1px',
-      opacity: !!name ? 1 : 0,
     }
   }
 
@@ -47,16 +43,8 @@ const TitleSection = observer(({ sprite, paint }: Partial<WatchSection>) => {
         <Subtitle { ...style } className={ `subtitle-text` } />
       </div>
       <div className="m-12 flex flex-col max-w-160 justify-end">
-          <div className="text-amber-50 text-sm font-body mb-3">
-              I'm a designer & developer based in Peoria IL aka Whiskey Capital of the World circa 1837 to 1920.
-              I thrive in the friction between form and function, and love expression in the medium of a hard solve.
-          </div>
-          <nav className="text-amber-50 font-heading-1 flex flex-col gap-2 uppercase">
-            <a>About</a>
-            <a>Work</a>
-            <a>Qualifications</a>
-            <a>Contact</a>
-          </nav>
+          <h3 className="text-amber-50 font-heading-1 uppercase">A Portfolio Site</h3>
+
         </div>
     </section>
 

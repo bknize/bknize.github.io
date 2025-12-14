@@ -2,7 +2,7 @@
     @apply fixed p-12 mt-6 transition duration-100 ease-in-out;
 
     .title-text {
-        @apply h-10 sm:h-20 w-auto transition duration-50 ease-out delay-75;
+        @apply h-10 sm:h-20 w-auto transition duration-150 ease-out delay-75;
     }
 
     .subtitle-text {

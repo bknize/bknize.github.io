@@ -14,7 +14,7 @@ export const copy = {
             "title": "Software Design Engineer",
             "year": "2024 - 2025",
             "copy": "Worked across front-end technologies to provide a unified, accessible, responsive User Experience. Prototyped new features on Figma.",
-            "projects": [
+            projects: [
                 {
                     "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags."
                 },
