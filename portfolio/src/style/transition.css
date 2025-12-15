@@ -1,0 +1,43 @@
+.transition-container {
+    @apply -z-10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: background-color 1s ease-in-out;
+}
+.transition-layer {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    mix-blend-mode: hard-light;
+    transform: translateY(-50%) translateX(-2%);
+    height: 100%;
+    /* our sprite is composed of 25 frames */
+    width: 2500%;
+    background-size: 100% 100%;
+    animation-fill-mode: forwards;
+    &.__animate {
+      animation: ink-sequence .8s steps(24);
+    }
+}
+.transition-helper {
+  @apply -z-10;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  top: 30vh;
+  left: 0;
+  border: 2px solid blue;
+  
+}
+
+@keyframes ink-sequence {
+  0% {
+    transform: translateY(-50%) translateX(-2%);
+  }
+  100% {
+    transform: translateY(-50%) translateX(-98%);
+  }
+}
