@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useAspectResize from '../hooks/useAspectResize';
 import SplatterBus2 from '~/utils/splatterState';
 import { observer } from 'mobx-react-lite';

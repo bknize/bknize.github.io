@@ -8,55 +8,64 @@ export const copy = {
   disclaimer: `All of my work is owned by my employers and lives on protected servers. The following case studies describe what I've been up to without infringing anything.
   `,
   experience: [{
+            id: 'softwaredesignengineer',
             "title": "Software Design Engineer",
             "year": "2024 - 2025",
             "copy": "Responsible for unified and frictionless User Experience across multiple apps and multiple tech stacks. Codified user flows, enforced standards, implemented design systems prototyped in Figma.",
             projects: [
                 {
+                    id: 'uioverhaul',
                     "title": "UI Overhaul",
-                    "slug": "cmsedit",
+                    // "slug": "cmsedit",
                     "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags.",
                     "tech": ["React", "TypeScript", "MUI", "Tailwind", "Redux", "Gitlab", "Bootstrap"]
                 },
                 {
+                    id: 'cmsedit',
                     "title": "CMS Edit",
-                    "slug": "cmsedit",
+                    // "slug": "cmsedit",
                     "copy": "Data-dense workflow for resolving errors in cms-1500 forms from users or AI Agents. Inputs validated by locale. CRUD-able tabular data, with navigable PDF viewer.",
                     "tech": ["React", "TypeScript", "MUI", "Tailwind", "Redux", "HTMX", "Django", "AI", "Figma", "Agile", "Gitlab", "Bootstrap", "SCSS"]
                 }
             ],
         },
         {
+            id: 'seniorfrontendengineer',
             "title": "Senior Frontend Engineer",
             "year": "2021 - 2024",
             "copy": "Developed and maintained a bespoke UI component library in partnership with the UX team. Co-lead a front-end team responsible for UI quality control by organizing initiatives and reviewing pull requests in Azure Devops.",
             "projects": [
                 {
+                    id: 'questionnaire',
                     "title": "Questionnaire",
-                    "slug": "questionnaires",
+                    // "slug": "questionnaires",
                     "copy": "Architected and implemented new features for flagship Questionnaires product: user concurrency, query building for batch operations, custom redux tooling.",
                     "tech": ["Aurelia", "TypeScript", "Redux", "SASS", "Jira", "Devops", "Agile"]
                 },
                 {
+                    id: 'vmlibrary',
                     "title": "vm-library",
-                    "slug": "vmlibrary",
+                    // "slug": "vmlibrary",
                     "copy": "Served as frontend team liaison to Product team, and co-lead initiatives to transform custom component designs into reusable Aurelia library. Achieved over 80% adoption rate over legacy components.",
                     "tech": ["Aurelia", "TypeScript", "SASS", "Figma", "Storybook"]
                 }
             ],
         },
         {
+            id: 'frontenddeveloper',
             "title": "Frontend Developer",
             "year": "2018 - 2021",
             "copy": "Balanced multiple concurrent clients. Mentored juniors, wrote code quality and design standards. Lead a front-end team, and performed SME duties in quoting and sales meetings.",
             "projects": [
                 {
+                    id: 'machineservice',
                     "title": "Machine Service CRUD",
-                    "slug": "servicecrud",
+                    // "slug": "servicecrud",
                     "copy": "Optimized UI for viewing and editing heavy machine service costs by implementing concurrency limits, list virtualization, async loading states, and centralized state management, allowing users to navigate an arbitrary amount of indeterminately-deeply nested records, and have their edits bubble up the hierarchy.",
                     "tech": ["Angular", "Material", "TypeScript", "SASS", "OData", "Devops", "Jira", "Agile"]
                 },
                 {
+                    id: 'vuemicroui',
                     "title": "Vue Micro-UI",
                     "copy": "Updated legacy MVC apps with advanced forms via Vue.js, allowing the team to make surgical UX improvements to critical features without necessitating a rebuild of the base app.",
                     "tech": ["Vue", "MVC", "Material", "Bootstrap", "TypeScript", "SASS"]
@@ -64,11 +73,13 @@ export const copy = {
             ],
         },
         {
+            id: 'multimediadeveloper',
             "title": "Multimedia Developer",
             "year": "2016 - 2018",
             "copy": "Authored and deployed industrial and medical eLearning web content and maintained Wordpress marketing sites for Fortune 500 clients, operating within corporate brand guides.",
             "projects": [
                 {
+                    id: 'microlms',
                     "title": "Micro LMS",
                     "copy": "Created a micro-LMS platform to render XML, image, video, and interactive eLearning content responsively, with integrated LMS reporting via SCORM.",
                     "tech": ["Vue", "JavaScript", "CSS"]

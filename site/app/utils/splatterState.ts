@@ -16,8 +16,6 @@ class SplatterBus2 {
     }
 
     setSection(section: WatchSection) {
-        console.log('set', section)
-
         this.currentSection = {...section}
     }
 

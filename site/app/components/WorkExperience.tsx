@@ -12,7 +12,7 @@ type JobType = typeof copy.experience[0];
 const WorkExperience = observer(({ job }: { job: JobType }) => {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref })
-    const y = useParallax(scrollYProgress, 20)
+    const y = useParallax(scrollYProgress, 40)
     const { paint } = splatterBus2.section
 
     return <div className="relative pr-6">
@@ -23,10 +23,10 @@ const WorkExperience = observer(({ job }: { job: JobType }) => {
             {job.year}
         </motion.h2>
         <h1 className={`font-heading-1 text-2xl sm:text-3xl md:text-5xl text-neutral-900 uppercase my-4`}>{job.title}</h1>
-        <h2 className="font-heading-1 text-lg sm:text-2xl text-neutral-900 mb-4">{job.year}</h2>
+        <h2 className="visible sm:hidden font-heading-1 text-lg sm:text-2xl text-neutral-900 mb-4">{job.year}</h2>
         <p className='text-neutral-900 text-md sm:text-lg md:text-2xl'>{job.copy}</p>
         {job.projects.map((project, i) => (
-            <Summary key={`${project.copy.substring(0, 5)}-${i}`} project={ project } />
+            <Summary key={`${project.id}`} project={ project } />
         ))}
     </div>
 })

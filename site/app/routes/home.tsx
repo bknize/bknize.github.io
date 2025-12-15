@@ -11,7 +11,6 @@ import TitleSection from '~/components/TitleSection';
 import Portrait from '~/components/Portrait';
 import WorkExperience from '~/components/WorkExperience';
 import Qualification from '~/components/Qualifications';
-import Nav from '~/components/Nav';
 import Section from '~/components/Section';
 
 const titlePaint = 'rgb(12, 10, 9)'
@@ -43,18 +42,13 @@ export default function Home() {
               <p>{ copy.body[1] }</p>
           </div>
         </div>
-
-
-            {/* <p className='invisible sm:visible'>{ copy.body[0] }</p>
-            <p className='invisible sm:visible'>{ copy.body[1] }</p>
-              */}
       
     </Section>
     <Section name="experience" title="002 Experience" sprite={ink} paint={experiencePaint}>
       <div className='p-6 pl-20 sm:pl-70 flex flex-col w-full'>
         <div className='py-16 flex flex-col gap-12 max-w-140'>
           {copy.experience.map((job, i) => (
-            <WorkExperience key={`${job.year.replace(' ', '_')}`} job={ job } />
+            <WorkExperience key={`${job.id}`} job={ job } />
           ))}
         </div>
       </div>
@@ -63,7 +57,7 @@ export default function Home() {
       <div className='p-6 pl-20 sm:pl-70 flex flex-col w-full'>
         <div className='py-16 flex flex-col gap-10 max-w-140 pr-6'>
           {copy.qualifications.map((qualification, i) => (
-            <Qualification key={`${qualification.opener.substring(0, 10)}`} qualification={qualification} />
+            <Qualification key={`${qualification.opener.substring(0, 30)}`} qualification={qualification} />
           ))}
         </div>
       </div>
@@ -83,6 +77,7 @@ export default function Home() {
           },
         ].map(({ text, href }) =>
             <a className='text-3xl'
+              key={ href }
               href={ href }>
               { text }
             </a>

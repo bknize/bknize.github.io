@@ -4,6 +4,7 @@ import Arrow from "./Arrow";
 
 
 type ProjectType = {
+    id: string,
     copy: string,
     slug?: string,
     title: string,
@@ -21,10 +22,10 @@ const Summary = ({ project }: { project: ProjectType }) => {
         <p className='mb-3'>{project.copy}</p>
         <div>
             {project.tech.map((tag, i) => (
-                <div key={`${tag}-${i}`} className="inline-block px-4 py-1 my-1 mr-2 text-amber-50 outline-2 outline-amber-50 font-heading-1 uppercase">{tag}</div>
+                <div key={`${tag}-${project.id}-${i}`} className="inline-block px-4 py-1 my-1 mr-2 text-amber-50 outline-2 outline-amber-50 font-heading-1 uppercase">{tag}</div>
             ))}
         </div>
-        { project.slug && <Link to={`case/${project.slug}`} className="mt-3 inline-flex! gap-4 items-center">Case Study: <Arrow color={ offWhite } className="w-8"/></Link> }
+        { project.slug && <Link to={`case/${project.slug}`} className="mt-3 inline-flex! gap-4 items-center">Case Study <Arrow color={ offWhite } className="w-8"/></Link> }
     </div>
 }
 
