@@ -19,6 +19,10 @@ section {
 main {
 }
 
+a {
+  @apply outline-3 outline-neutral-900 bg-neutral-900 hover:bg-transparent text-amber-50 px-5 py-3 font-heading-1 uppercase transition duration-150 ease-in-out inline-block;
+
+}
 
 p {
   @apply font-body;

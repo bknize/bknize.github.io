@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type RefObject } from "react"
 import useSectionScrollWatcher from "~/hooks/useSectionScrollWatcher";
-import type { WatchSection } from "./transition/WatchSection";
+import type { WatchSection } from "../utils/WatchSection";
 import { motion, MotionValue, useScroll } from "motion/react";
 import useParallax from "~/hooks/useParallax";
 

@@ -1,4 +1,4 @@
-import type { WatchSection } from "~/components/transition/WatchSection";
+import type { WatchSection } from "~/utils/WatchSection";
 import { observer } from "mobx-react-lite"
 import { makeAutoObservable } from "mobx"
 import { debounce } from "./debounce";

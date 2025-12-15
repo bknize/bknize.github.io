@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react"
 import useSectionScrollWatcher from "~/hooks/useSectionScrollWatcher";
-import type { WatchSection } from "./transition/WatchSection";
+import type { WatchSection } from "../utils/WatchSection";
 import TitleContainer from "./title-text/TitleContainer";
 import Title from "./title-text/Title";
 import Subtitle from "./title-text/Subtitle";
-import { splatterBus2 } from "./transition/PaintSplatter";
+import { splatterBus2 } from "../utils/PaintSplatter";
 import { observer } from "mobx-react-lite";
 
 const titleColor = 'rgb(255, 251, 235)'

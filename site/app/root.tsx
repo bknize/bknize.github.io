@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import PaintSplatter from "./components/transition/PaintSplatter";
+import PaintSplatter from "./utils/PaintSplatter";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -35,12 +35,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-          {children}
+        {children}
 
-    <PaintSplatter />
+        <PaintSplatter />
         <ScrollRestoration />
         <Scripts />
-
       </body>
     </html>
   );

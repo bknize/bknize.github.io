@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite"
-import { splatterBus2 } from "./transition/PaintSplatter"
+import { splatterBus2 } from "../utils/PaintSplatter"
 
 const Nav = observer(() => {
 

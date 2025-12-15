@@ -4,7 +4,7 @@ import { useRef } from "react";
 import type { JSX } from "react/jsx-runtime";
 import useParallax from "~/hooks/useParallax";
 import type { copy } from "~/routes/homeCopy";
-import { splatterBus2 } from "./transition/PaintSplatter";
+import { splatterBus2 } from "../utils/PaintSplatter";
 
 type QualificationType = typeof copy.qualifications[0];
 

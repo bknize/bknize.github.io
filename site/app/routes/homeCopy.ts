@@ -16,9 +16,13 @@ export const copy = {
             "copy": "Worked across front-end technologies to provide a unified, accessible, responsive User Experience. Prototyped new features on Figma.",
             projects: [
                 {
+                    "title": "MUI Schema Form",
+                    "slug": "muischemaform",
                     "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags."
                 },
                 {
+                    "title": "CMS Edit",
+                    "slug": "cmsedit",
                     "copy": "Implemented a data-dense user workflow for resolving errors in user-submitted or AI-interpreted insurance claim data. Validated dynamic form inputs by international jurisdiction, created elegant CRUD operations for tabular data, and created a PDF view navigable by scrolling, zooming, or clickable hotspots linked to form inputs."
                 }
             ],
@@ -30,9 +34,13 @@ export const copy = {
             "copy": "Developed and maintained a bespoke UI component library in partnership with the UX team. Co-lead a front-end team responsible for UI quality control by organizing initiatives and reviewing pull requests in Azure Devops.",
             "projects": [
                 {
+                    "title": "Questionnaire",
+                    "slug": "questionnaires",
                     "copy": "Managed advanced CMS workflow for users to CRUD and analyze questionnaires and responses; flagship product in vendor risk management suite. Used Redux to create predictable, testable, and observable UI. Created a powerful query-building interface for batch operations, optimized/virtualized to handle upwards of 400k+ records concurrently.  Built in Aurelia, TypeScript, and SASS."
                 },
                 {
+                    "title": "vm-library",
+                    "slug": "vmlibrary",
                     "copy": "Actually talk about the component library"
                 }
             ],
@@ -44,9 +52,13 @@ export const copy = {
             "copy": "Balanced multiple concurrent clients. Mentored juniors, wrote code quality and design standards. Lead a front-end team, and performed SME duties in quoting and sales meetings.",
             "projects": [
                 {
+                    "title": "Machine Service CRUD",
+                    "slug": "servicecrud",
                     "copy": "Optimized UI for viewing and editing heavy machine service costs by implementing concurrency limits, list virtualization, async loading states, and centralized state management, allowing users to navigate an arbitrary amount of indeterminately-deeply nested records, and have their edits bubble up the hierarchy."
                 },
                 {
+                    "title": "Vue Micro-UI",
+                    "slug": "vuemicroui",
                     "copy": "Updated legacy MVC apps with advanced forms via Vue.js, allowing the team to make surgical UX improvements to critical features without necessitating a rebuild of the base app."
                 }
             ],
@@ -58,6 +70,8 @@ export const copy = {
             "copy": "Authored and deployed industrial and medical eLearning web content and maintained Wordpress marketing sites for Fortune 500 clients, operating within corporate brand guides.",
             "projects": [
                 {
+                    "title": "Micro LMS",
+                    "slug": "microlms",
                     "copy": "Created a micro-LMS platform to render XML, image, video, and interactive eLearning content responsively, with integrated LMS reporting via SCORM."
                 }
             ],

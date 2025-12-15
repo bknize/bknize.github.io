@@ -3,13 +3,15 @@ import type { copy } from "~/routes/homeCopy";
 
 
 type ProjectType = {
-    copy: string
+    copy: string,
+    slug: string,
+    title: string,
 };
 
 const Summary = ({ project }: { project: ProjectType }) => {
     return <div>
         <p className='border-l-2 border-amber-50 pl-3 my-3'>{project.copy}</p>
-        {/* <Link to={'/case/test'}>Case Study</Link> */}
+        <Link to={`case/${project.slug}`} className="my-4">Case Study: { project.title }</Link>
     </div>
 }
 

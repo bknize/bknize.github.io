@@ -1,7 +1,7 @@
 import { useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { splatterBus2 } from "~/components/transition/PaintSplatter";
-import type { WatchSection } from "~/components/transition/WatchSection";
+import { splatterBus2 } from "~/utils/PaintSplatter";
+import type { WatchSection } from "~/utils/WatchSection";
 
 /* stolen from motion/react */
 type MarginValue = `${number}${"px" | "%"}`;
