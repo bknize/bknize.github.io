@@ -22,17 +22,12 @@ const WorkExperience = observer(({ job }: { job: JobType }) => {
           style={{ y, backgroundColor: paint, transition: 'background-color 1s ease-in-out' }}>
             {job.year}
         </motion.h2>
-        <h1 className={`font-heading-1 text-6xl text-neutral-900 uppercase my-4`}>{job.title}</h1>
-        <h2 className="font-heading-1 text-3xl text-neutral-900 mb-4">{job.year}</h2>
-        <p className='text-neutral-900 text-2xl'>{job.copy}</p>
+        <h1 className={`font-heading-1 text-2xl sm:text-3xl md:text-5xl text-neutral-900 uppercase my-4`}>{job.title}</h1>
+        <h2 className="font-heading-1 text-lg sm:text-2xl text-neutral-900 mb-4">{job.year}</h2>
+        <p className='text-neutral-900 text-md sm:text-lg md:text-2xl'>{job.copy}</p>
         {job.projects.map((project, i) => (
             <Summary key={`${project.copy.substring(0, 5)}-${i}`} project={ project } />
         ))}
-        <div>
-            {job.tech.map((tag, i) => (
-                <div key={`${tag}-${i}`} className="inline-block px-4 py-1 my-4 mr-2 text-amber-50 outline-2 outline-amber-50 font-heading-1 uppercase">{tag}</div>
-                ))}
-        </div>
     </div>
 })
 

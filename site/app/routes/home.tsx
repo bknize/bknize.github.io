@@ -24,17 +24,30 @@ export default function Home() {
   return <>
     <TitleSection sprite={ink} paint={titlePaint} />
     <Section name="about" title="001 About" sprite={ink} paint={aboutPaint}
-      className='flex flex-row pl-3 sm:pl-6 md:pl-14'>
-      <div className='flex items-center'>
-        <Portrait paint={aboutPaint} className='sm:ml-4 md:ml-10 w-34 sm:w-60 h-auto outline-2 outline-offset-6 outline-amber-50' />
-      </div>
-      <div className='flex items-center p-6 px-9 font-body text-amber-50'>
-        <div className='max-w-120'>
-          <h2 className='text-8xl'>Hi ~</h2>
-          <p>I'm a frontend engineer based in Peoria IL aka Whiskey Capital of the World circa 1837 to 1920.</p>
-          <p>I have 9+ years in design, development, UI & UX. I've worked in behemoth enterprise teams and lean SAAS startups. I like happy users and maintainable code.</p>
+      className='flex'>
+        <div className='flex flex-col items-center justify-center gap-6'>
+          <div className='flex flex-row gap-4 items-center'>
+            <div className='relative -left-6'>
+              <Portrait paint={aboutPaint} className='sm:ml-4 md:ml-10 w-24 sm:w-60 h-auto outline-2 outline-offset-6 outline-amber-50' />
+            </div>
+            <div className='pl-6 pr-9'>
+              <h2 className='text-6xl font-body text-amber-50'>Hi&nbsp;~</h2>
+              <div className='flex-col gap-4 hidden sm:flex text-amber-50 text-lg'>
+                <p>{ copy.body[0] }</p>
+                <p>{ copy.body[1] }</p>
+              </div>
+            </div>
+          </div>
+          <div className='visible sm:hidden text-amber-50 pl-18 pr-9'>
+              <p>{ copy.body[0] }</p>
+              <p>{ copy.body[1] }</p>
+          </div>
         </div>
-      </div>
+
+
+            {/* <p className='invisible sm:visible'>{ copy.body[0] }</p>
+            <p className='invisible sm:visible'>{ copy.body[1] }</p>
+              */}
       
     </Section>
     <Section name="experience" title="002 Experience" sprite={ink} paint={experiencePaint}>

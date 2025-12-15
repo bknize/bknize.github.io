@@ -1,32 +1,30 @@
 export const copy = {
   body: [
-    `Hi, I'm Ben. I'm a frontend developer with 9+ years experience
-    solving technical and experiential problems. I know a bunch of 
-    different tools and have worn a lot of hats.
+    `I'm a frontend engineer based in Peoria IL aka Whiskey Capital of the World circa 1837 to 1920.
     `,
-    `I work in enterprise-scale web apps for industrial, medical, 
-    and commercial markets.
+    `I have 9+ years in design, development, UI & UX. I've worked in behemoth enterprise teams and lean SAAS startups. I like happy users and maintainable code.
     `,
-    `I love music and I'm also a pretty good cook.
-    `
   ],
+  disclaimer: `All of my work is owned by my employers and lives on protected servers. The following case studies describe what I've been up to without infringing anything.
+  `,
   experience: [{
             "title": "Software Design Engineer",
             "year": "2024 - 2025",
-            "copy": "Worked across front-end technologies to provide a unified, accessible, responsive User Experience. Prototyped new features on Figma.",
+            "copy": "Responsible for unified and frictionless User Experience across multiple apps and multiple tech stacks. Codified user flows, enforced standards, implemented design systems prototyped in Figma.",
             projects: [
                 {
-                    "title": "MUI Schema Form",
-                    "slug": "muischemaform",
-                    "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags."
+                    "title": "UI Overhaul",
+                    "slug": "cmsedit",
+                    "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags.",
+                    "tech": ["React", "TypeScript", "MUI", "Tailwind", "Redux", "Gitlab", "Bootstrap"]
                 },
                 {
                     "title": "CMS Edit",
                     "slug": "cmsedit",
-                    "copy": "Implemented a data-dense user workflow for resolving errors in user-submitted or AI-interpreted insurance claim data. Validated dynamic form inputs by international jurisdiction, created elegant CRUD operations for tabular data, and created a PDF view navigable by scrolling, zooming, or clickable hotspots linked to form inputs."
+                    "copy": "Data-dense workflow for resolving errors in cms-1500 forms from users or AI Agents. Inputs validated by locale. CRUD-able tabular data, with navigable PDF viewer.",
+                    "tech": ["React", "TypeScript", "MUI", "Tailwind", "Redux", "HTMX", "Django", "AI", "Figma", "Agile", "Gitlab", "Bootstrap", "SCSS"]
                 }
             ],
-            "tech": ["React", "TypeScript", "MUI", "SASS"]
         },
         {
             "title": "Senior Frontend Engineer",
@@ -36,15 +34,16 @@ export const copy = {
                 {
                     "title": "Questionnaire",
                     "slug": "questionnaires",
-                    "copy": "Managed advanced CMS workflow for users to CRUD and analyze questionnaires and responses; flagship product in vendor risk management suite. Used Redux to create predictable, testable, and observable UI. Created a powerful query-building interface for batch operations, optimized/virtualized to handle upwards of 400k+ records concurrently.  Built in Aurelia, TypeScript, and SASS."
+                    "copy": "Architected and implemented new features for flagship Questionnaires product: user concurrency, query building for batch operations, custom redux tooling.",
+                    "tech": ["Aurelia", "TypeScript", "Redux", "SASS", "Jira", "Devops", "Agile"]
                 },
                 {
                     "title": "vm-library",
                     "slug": "vmlibrary",
-                    "copy": "Actually talk about the component library"
+                    "copy": "Served as frontend team liaison to Product team, and co-lead initiatives to transform custom component designs into reusable Aurelia library. Achieved over 80% adoption rate over legacy components.",
+                    "tech": ["Aurelia", "TypeScript", "SASS", "Figma", "Storybook"]
                 }
             ],
-            "tech": ["Aurelia", "TypeScript", "SASS"]
         },
         {
             "title": "Frontend Developer",
@@ -54,15 +53,15 @@ export const copy = {
                 {
                     "title": "Machine Service CRUD",
                     "slug": "servicecrud",
-                    "copy": "Optimized UI for viewing and editing heavy machine service costs by implementing concurrency limits, list virtualization, async loading states, and centralized state management, allowing users to navigate an arbitrary amount of indeterminately-deeply nested records, and have their edits bubble up the hierarchy."
+                    "copy": "Optimized UI for viewing and editing heavy machine service costs by implementing concurrency limits, list virtualization, async loading states, and centralized state management, allowing users to navigate an arbitrary amount of indeterminately-deeply nested records, and have their edits bubble up the hierarchy.",
+                    "tech": ["Angular", "Material", "TypeScript", "SASS", "OData", "Devops", "Jira", "Agile"]
                 },
                 {
                     "title": "Vue Micro-UI",
-                    "slug": "vuemicroui",
-                    "copy": "Updated legacy MVC apps with advanced forms via Vue.js, allowing the team to make surgical UX improvements to critical features without necessitating a rebuild of the base app."
+                    "copy": "Updated legacy MVC apps with advanced forms via Vue.js, allowing the team to make surgical UX improvements to critical features without necessitating a rebuild of the base app.",
+                    "tech": ["Vue", "MVC", "Material", "Bootstrap", "TypeScript", "SASS"]
                 }
             ],
-            "tech": ["Vue", "Angular", "Material", "TypeScript", "SASS"]
         },
         {
             "title": "Multimedia Developer",
@@ -71,11 +70,10 @@ export const copy = {
             "projects": [
                 {
                     "title": "Micro LMS",
-                    "slug": "microlms",
-                    "copy": "Created a micro-LMS platform to render XML, image, video, and interactive eLearning content responsively, with integrated LMS reporting via SCORM."
+                    "copy": "Created a micro-LMS platform to render XML, image, video, and interactive eLearning content responsively, with integrated LMS reporting via SCORM.",
+                    "tech": ["Vue", "JavaScript", "CSS"]
                 }
             ],
-            "tech": ["Vue", "JavaScript", "CSS"]
         }
     ],
     "qualifications": [

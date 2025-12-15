@@ -7,7 +7,7 @@ const Portrait = ({ className = '', ...props }: { className?: string, paint: str
   const { paint } = props;
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref })
-  const y = useParallax(scrollYProgress, 300)
+  const y = useParallax(scrollYProgress, 200)
 
 return <motion.div ref={ref} className={`relative ${className}`}
           initial={{ visibility: "hidden", opacity: 0 }}

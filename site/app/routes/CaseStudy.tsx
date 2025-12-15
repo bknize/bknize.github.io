@@ -24,7 +24,7 @@ const CaseStudy = () => {
   })
 
     return <div ref={ref} className="px-6">
-      <a href="/" className="inline-flex! gap-4 items-center mb-6">
+      <a href={`/#${params.slug}`} className="inline-flex! gap-4 items-center mb-6">
         <Arrow color={ offWhite } className="-scale-x-100 w-8"/>
          Back
       </a>
