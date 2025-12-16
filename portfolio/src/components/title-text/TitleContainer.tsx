@@ -1,6 +1,13 @@
+import type { ReactNode } from "react";
 
-const TitleContainer = ({ children }: any) => (
-    <div className='fixed'>{ children }</div>
-)
+const TitleContainer = ({ children }: { children: ReactNode }) => (
+  <div
+    className="
+      fixed
+    "
+  >
+    {children}
+  </div>
+);
 
 export default TitleContainer;
