@@ -5,13 +5,14 @@ import { titlePaint, offWhite } from "../utils/colors";
 import useCaseStudy from "../hooks/useCaseStudy";
 import Arrow from "../components/Arrow";
 import { splatterState } from "../utils/splatterState";
+import Markdown from "marked-react";
 
 const CaseStudy = () => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const params = useParams();
   const navigate = useNavigate();
-  const caseStudy = useCaseStudy(params.slug!);
+  const { project, markdown } = useCaseStudy(params.id!);
 
   useEffect(() => {
     splatterState.setSection({
@@ -64,8 +65,9 @@ const CaseStudy = () => {
           uppercase
         "
       >
-        {caseStudy?.title}
+        {project?.title}
       </h1>
+      {!!markdown && <Markdown>{markdown}</Markdown>}
     </div>
   );
 };

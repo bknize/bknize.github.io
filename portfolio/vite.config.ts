@@ -12,5 +12,14 @@ export default defineConfig({
         plugins: [['babel-plugin-react-compiler']],
       },
     }),
+    {
+      name: "markdown-loader",
+      transform(code, id) {
+        if (id.slice(-3) === ".md") {
+          // For .md files, get the raw content
+          return `export default ${JSON.stringify(code)};`;
+        }
+      }
+    }
   ],
 })

@@ -12,6 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "marked": "^17.0.1",
+    "marked-react": "^3.0.2",
     "mobx": "^6.15.0",
     "mobx-react-lite": "^4.1.1",
     "motion": "^12.23.26",

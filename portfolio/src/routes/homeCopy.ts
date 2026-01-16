@@ -16,14 +16,13 @@ export const copy = {
                 {
                     id: 'uioverhaul',
                     "title": "UI Overhaul",
-                    // "slug": "cmsedit",
                     "copy": "Built a React MUI integration for json-schema-form library, adding advanced UI features such as loading animations, error handling, theming, and Redux state tooling to existing user input components, while scoping the changes to feature flags.",
                     "tech": ["React", "TypeScript", "MUI", "Tailwind", "Redux", "Gitlab", "Bootstrap"]
                 },
                 {
                     id: 'cmsedit',
                     "title": "CMS Edit",
-                    // "slug": "cmsedit",
+                    "slug": "cmsedit",
                     "copy": "Data-dense workflow for resolving errors in cms-1500 forms from users or AI Agents. Inputs validated by locale. CRUD-able tabular data, with navigable PDF viewer.",
                     "tech": ["React", "TypeScript", "MUI", "Tailwind", "Redux", "HTMX", "Django", "AI", "Figma", "Agile", "Gitlab", "Bootstrap", "SCSS"]
                 }
@@ -38,14 +37,14 @@ export const copy = {
                 {
                     id: 'questionnaire',
                     "title": "Questionnaire",
-                    // "slug": "questionnaires",
+                    "slug": "questionnaires",
                     "copy": "Architected and implemented new features for flagship Questionnaires product: user concurrency, query building for batch operations, custom redux tooling.",
                     "tech": ["Aurelia", "TypeScript", "Redux", "SASS", "Jira", "Devops", "Agile"]
                 },
                 {
                     id: 'vmlibrary',
                     "title": "vm-library",
-                    // "slug": "vmlibrary",
+                    "slug": "vmlibrary",
                     "copy": "Served as frontend team liaison to Product team, and co-lead initiatives to transform custom component designs into reusable Aurelia library. Achieved over 80% adoption rate over legacy components.",
                     "tech": ["Aurelia", "TypeScript", "SASS", "Figma", "Storybook"]
                 }
