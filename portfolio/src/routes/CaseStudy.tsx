@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import ink from "../assets/img/ink.png";
 import { useEffect, useRef } from "react";
-import { titlePaint, offWhite } from "../utils/colors";
+import { offWhite, experiencePaint } from "../utils/colors";
 import useCaseStudy from "../hooks/useCaseStudy";
 import Arrow from "../components/Arrow";
 import { splatterState } from "../utils/splatterState";
@@ -17,7 +17,7 @@ const CaseStudy = () => {
   useEffect(() => {
     splatterState.setSection({
       name: `case-study-${params.slug}`,
-      paint: titlePaint,
+      paint: experiencePaint,
       sprite: ink,
       ref,
     });
@@ -31,15 +31,15 @@ const CaseStudy = () => {
     <div
       ref={ref}
       className="
-        px-6
+        page
       "
     >
       <a
         onClick={handleClick}
         className="
           inline-flex!
-          mb-6
-          gap-4 items-center
+          m-2
+          link gap-4 items-center
         "
       >
         <Arrow
@@ -51,23 +51,34 @@ const CaseStudy = () => {
         />
         Back
       </a>
-      <h3
+      <div
         className="
-          font-heading-1 text-amber-50 text-2xl
-          uppercase
+          flex flex-col
+          w-full max-w-200
+          mx-auto mt-0 pb-40
         "
       >
-        Case Study:
-      </h3>
-      <h1
-        className="
-          font-heading-1 text-amber-50 text-4xl
-          uppercase
-        "
-      >
-        {project?.title}
-      </h1>
-      {!!markdown && <Markdown>{markdown}</Markdown>}
+        <h3
+          className="
+            font-heading-1 text-amber-50 text-4xl
+            uppercase
+          "
+        >
+          Case Study:
+        </h3>
+        <h3
+          className="
+            mb-12
+            font-heading-1 text-amber-50 text-6xl
+            uppercase
+          "
+        >
+          {project?.title}
+        </h3>
+        {!!markdown && (
+          <Markdown openLinksInNewTab={false}>{markdown}</Markdown>
+        )}
+      </div>
     </div>
   );
 };

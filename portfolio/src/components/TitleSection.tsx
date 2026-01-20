@@ -23,7 +23,7 @@ const TitleSection = observer(({ sprite, paint }: Partial<WatchSection>) => {
     <section
       ref={ref}
       className="
-        relative
+        home-section relative
       "
     >
       <div

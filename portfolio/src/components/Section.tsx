@@ -19,7 +19,7 @@ export default function Section({
     <section
       ref={ref}
       className={`
-        relative ${className || ""}
+        home-section relative ${className || ""}
       `}
     >
       {children}

@@ -35,7 +35,7 @@ export default function Home() {
           <div
             className="
               flex flex-row
-              gap-4 items-center
+              gap-x-4 items-center
             "
           >
             <div
@@ -55,7 +55,7 @@ export default function Home() {
             </div>
             <div
               className="
-                pl-6 pr-9
+                pr-9
               "
             >
               <h2
@@ -68,6 +68,8 @@ export default function Home() {
               <div
                 className="
                   flex-col hidden
+                  max-w-140
+                  py-16
                   text-amber-50 text-lg
                   gap-4
                   sm:flex
@@ -102,7 +104,7 @@ export default function Home() {
             flex flex-col
             w-full
             p-6 pl-20 py-[30vh]
-            sm:pl-70
+            sm:pl-74
           "
         >
           <h1
@@ -139,7 +141,7 @@ export default function Home() {
             flex flex-col
             w-full
             p-6 pl-20 py-[30vh]
-            sm:pl-70
+            sm:pl-74
           "
         >
           <h1

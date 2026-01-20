@@ -13,29 +13,31 @@ Our team was scaled to own the Questionnaires feature. The user workflow had, fo
 Now, the obvious answer for concurrency is web sockets. However, we have financial and medical clients whose IT departments fully disallow web socket connections, or any of our VS push utilities. So, we’re stuck with polling, and ‘edit locking’.
 
 
-We have two problems: concurrent users controlled solely through polling, and bulk operations needing to operate on an upper limit of 500,000 records.
+We have two problems: concurrent users controlled solely through polling, and bulk operations needing to operate on an upper limit of 400,000 records.
 
 
-# Here are our requirements so far:
+## Here are our requirements so far:
 * Polling - it needs to feel natural to users, and needs to be as frequent as possible without DDoSing ourselves, yet we want to minimize ‘dead time’ where a lock is expiring after a user has finished editing.
 * Rendering 400k records is a performance atom bomb, so we need to get tricky in making sure we’re not rendering that many on the page at any given time.
-We learn later that filtering is better than scrolling - rather than focus on the technical hurdles of virtualizing a 400,000-record-long list, we should force pagination. * A list that long is useless; if our users need a sense of overall trends, provide a chart; if our users are looking for a specific record, provide sufficient filtering and searching machinery to narrow it from 400k to less than 100 items.
+We learn later that filtering is better than scrolling - rather than focus on the technical hurdles of virtualizing a 400,000-record-long list, we should force pagination.
+* A list that long is useless; if our users need a sense of overall trends, provide a chart; if our users are looking for a specific record, provide sufficient filtering and searching machinery to narrow it from 400k to less than 100 items.
 
 # Tech:
 * Our framework is Aurelia.js v1. It plays like Angular one-and-a-half, and sorely lacks all of Angular’s support libraries. We do have a redux implementation called, simply, ‘aurelia-store’, but it’s rudimentary.
-* aurelia-store doesn’t have a RTK-style utility out of the box, so we wrote one
+* aurelia-store doesn’t have a RTK-style utility out of the box, so have to write them.
 * aurelia-store does require rxjs as a dependency, so we just needed to create a few factory functions to turn an API service into a trio of Request/Success/Failure actions.
 * We are also missing a side effect library, like NgRx/effects, sagas, thunk, etc. so we’ll have to make one of those, too.
-* Our component library is in-house, developed by a team of frontenders in conjunction with the dedicated design/UX team. More on that [link]here.
+* Our component library is in-house, developed by a team of frontenders in conjunction with the dedicated design/UX team. More on that [here](#/vmlibrary).
 * We used chart.js for graphing data when we need to.
 
-# How it works:
+## How it works:
 * Our side-effects watcher borrows heavily from NgRx. Aurelia’s DI works just like Angular 2’s; we add aurelia-store middleware at the provider which watches every store action. We have a set of utility functions which register side effects with a given key, so our middleware looks for matches to a registered key and then fires off the side effect.
-* Now, the factory. This is modeled like RTK createSlice. The reality of RSF-pattern actions is that it’s a ton of boilerplate. We first wrote abstract interfaces for feature state: `Interface AsyncState<T = ErrorType> { Loading: true; Loaded: false; Error: Error<T>;}`
+* Now, the factory. This is modeled like RTK createSlice. The reality of RSF-pattern actions is that it’s a ton of boilerplate. We first wrote abstract interfaces for feature state:  
+`Interface AsyncState<T = ErrorType> { Loading: true; Loaded: false; Error: Error<T>;}`
 * Every piece of state which is managed by our RSF actions must be extended by or union-typed with AsyncState to guarantee we have those three properties. ErrorType has a default, but can be overridden as needed. Our RSF factory now only needs a single key, a single reducer for the Success handler, and an optional Error type.
 
 
-Okay, but, I thought we were doing Polling and Virtualization/filtering?  
+Okay, but, I thought we were doing Polling and Virtualization?  
 Right, we are, hang on.
 
 

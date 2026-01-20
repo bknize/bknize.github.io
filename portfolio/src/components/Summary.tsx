@@ -58,7 +58,7 @@ const Summary = ({ project }: { project: ProjectType }) => {
           className="
             inline-flex!
             mt-3
-            gap-4 items-center
+            link gap-4 items-center
           "
         >
           Case Study{" "}
