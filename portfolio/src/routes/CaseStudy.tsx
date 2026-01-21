@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import ink from "../assets/img/ink.png";
 import { useEffect, useRef } from "react";
-import { offWhite, experiencePaint } from "../utils/colors";
+import { offWhite, caseStudyPaint } from "../utils/colors";
 import useCaseStudy from "../hooks/useCaseStudy";
 import Arrow from "../components/Arrow";
 import { splatterState } from "../utils/splatterState";
@@ -17,7 +17,7 @@ const CaseStudy = () => {
   useEffect(() => {
     splatterState.setSection({
       name: `case-study-${params.slug}`,
-      paint: experiencePaint,
+      paint: caseStudyPaint,
       sprite: ink,
       ref,
     });
@@ -31,6 +31,8 @@ const CaseStudy = () => {
     <div
       ref={ref}
       className="
+        pt-2
+        text-neutral-900
         page
       "
     >
@@ -39,7 +41,8 @@ const CaseStudy = () => {
         className="
           inline-flex!
           m-2
-          link gap-4 items-center
+          link gap-4 items-center left-0
+          lg:fixed
         "
       >
         <Arrow
@@ -54,13 +57,13 @@ const CaseStudy = () => {
       <div
         className="
           flex flex-col
-          w-full max-w-200
-          mx-auto mt-0 pb-40
+          w-full max-w-180
+          mx-auto mt-0 px-2 pb-40
         "
       >
         <h3
           className="
-            font-heading-1 text-amber-50 text-4xl
+            font-heading-1 text-4xl text-neutral-900
             uppercase
           "
         >
@@ -69,7 +72,7 @@ const CaseStudy = () => {
         <h3
           className="
             mb-12
-            font-heading-1 text-amber-50 text-6xl
+            font-heading-1 text-6xl text-neutral-900
             uppercase
           "
         >

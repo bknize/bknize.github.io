@@ -199,6 +199,7 @@ export default function Home() {
               href={href}
               className="
                 text-3xl
+                link
               "
             >
               {text}

@@ -47,5 +47,5 @@ li {
 }
 
 code {
-  @apply bg-neutral-900/30 py-0.5 px-2
+  @apply bg-neutral-900/30 py-0.5 px-2 break-keep border-l-2 border-neutral-500 whitespace-nowrap
 }
