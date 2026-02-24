@@ -1,0 +1,28 @@
+.title-container {
+    @apply fixed p-12 mt-6 transition duration-100 ease-in-out;
+
+    .title-text {
+        @apply h-14 sm:h-20 w-auto transition duration-150 ease-out delay-75;
+    }
+
+    .subtitle-text {
+        @apply h-6 sm:h-14 w-auto mt-2 transition duration-250 ease-out delay-75;
+    }
+
+
+    &.__active {
+        /* @apply max-w-1/2; */
+    }
+    &.__inactive {
+        @apply rotate-90;
+        .title-text {
+            @apply sm:scale-250 sm:translate-x-120 sm:translate-y-65
+                scale-120 translate-x-10 translate-y-40;
+        }
+
+        .subtitle-text {
+            @apply sm:scale-250 sm:translate-x-70 sm:translate-y-20
+                scale-120 translate-x-20 translate-y-30;
+        }
+    }
+}

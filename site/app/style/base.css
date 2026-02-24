@@ -1,0 +1,29 @@
+html, body {
+  @apply min-h-full relative -z-20 bg-neutral-950;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  @apply flex flex-col;
+}
+
+section {
+  @apply min-h-screen flex outline-2 outline-solid outline-amber-50 -outline-offset-16;
+
+  scroll-snap-align: start;
+
+}
+main {
+}
+
+a {
+  @apply outline-3 outline-neutral-900 bg-neutral-900 hover:bg-transparent text-amber-50 px-5 py-3 font-heading-1 uppercase transition duration-150 ease-in-out inline-block;
+
+}
+
+p {
+  @apply font-body;
+}

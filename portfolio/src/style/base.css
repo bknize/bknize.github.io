@@ -1,0 +1,51 @@
+html, body {
+  @apply min-h-full relative -z-20 bg-neutral-950;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  @apply flex flex-col;
+}
+
+section.home-section {
+  @apply min-h-screen flex outline-2 outline-solid outline-amber-50 -outline-offset-16;
+
+  scroll-snap-align: start;
+
+}
+main {
+}
+
+a:not(.link) {
+  @apply border-b-3 font-bold hover:border-amber-50 hover:text-amber-50 hover:cursor-pointer transition duration-150 ease-in-out 
+}
+a.link {
+  @apply outline-3 outline-neutral-900 bg-neutral-900 hover:bg-transparent hover:cursor-pointer text-amber-50 px-5 py-3 font-heading-1 uppercase transition duration-150 ease-in-out inline-block;
+}
+
+p {
+  @apply font-body mt-2 mb-4;
+}
+ul {
+  @apply font-body list-disc list-inside my-2
+}
+li {
+  @apply mb-1.5;
+}
+
+.page h1, .page h2 {
+  @apply my-2
+}
+.page h1 {
+  @apply font-heading-1 text-3xl
+}
+.page h2 {
+  @apply font-heading-3 text-xl
+}
+
+code {
+  @apply bg-neutral-900/30 py-0.5 px-2 break-keep border-l-2 border-neutral-500 whitespace-nowrap
+}
