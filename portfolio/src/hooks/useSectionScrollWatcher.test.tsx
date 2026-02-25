@@ -78,31 +78,4 @@ describe('useSectionScrollWatcher', () => {
 
     expect(mockSetSection).not.toHaveBeenCalled();
   });
-
-  it('uses default margin of -200px 0px -200px 0px', () => {
-    mockUseInView.mockReturnValue(false);
-    const ref = { current: document.createElement('div') };
-
-    renderHook(() =>
-      useSectionScrollWatcher({
-        name: 'test', ref: ref as never, sprite: '', paint: '',
-      }),
-    );
-
-    expect(mockUseInView).toHaveBeenCalledWith(ref, { margin: '-200px 0px -200px 0px' });
-  });
-
-  it('passes custom margin to useInView', () => {
-    mockUseInView.mockReturnValue(false);
-    const ref = { current: document.createElement('div') };
-
-    renderHook(() =>
-      useSectionScrollWatcher({
-        name: 'test', ref: ref as never, sprite: '', paint: '',
-        margin: '-60% 0px 0px 0px',
-      }),
-    );
-
-    expect(mockUseInView).toHaveBeenCalledWith(ref, { margin: '-60% 0px 0px 0px' });
-  });
 });

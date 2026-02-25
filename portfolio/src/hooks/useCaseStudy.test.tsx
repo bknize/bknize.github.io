@@ -31,9 +31,11 @@ jest.mock('../routes/homeCopy', () => ({
 
 describe('useCaseStudy', () => {
   it('starts with null values', () => {
-    const { result } = renderHook(() => useCaseStudy('test-slug'));
+    const { result, unmount } = renderHook(() => useCaseStudy('test-slug'));
 
     expect(result.current.error).toBeNull();
+
+    unmount();
   });
 
   it('resolves project and experience by slug', async () => {

@@ -12,5 +12,6 @@ module.exports = {
     '\\.md$': '<rootDir>/src/__mocks__/fileMock.ts',
     '\\.css$': '<rootDir>/src/__mocks__/fileMock.ts',
   },
+  setupFiles: ['<rootDir>/src/jestEnvPolyfills.cjs'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 };

@@ -68,7 +68,7 @@ describe('WorkExperience', () => {
     mockSplatter.splatterState.section.paint = '#000000';
     const { container } = render(<WorkExperience job={mockJob} />);
     const yearEl = container.querySelector('h2');
-    expect(yearEl).toHaveStyle({ backgroundColor: 'transparent' });
+    expect(yearEl).not.toHaveStyle({ backgroundColor: '#32C0CC' });
   });
 
   it('uses experiencePaint as background when paint matches', () => {

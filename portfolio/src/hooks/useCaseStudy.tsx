@@ -61,21 +61,31 @@ const useCaseStudy = (slug: string) => {
   });
 
   useEffect(() => {
+    let cancelled = false;
+
     const fetchMarkdown = async () => {
       try {
         const markdown = await loadMarkdown(slug);
 
-        setData((prev) => ({
-          ...prev,
-          ...getProjectBySlug(copy, slug),
-          markdown,
-        }));
+        if (!cancelled) {
+          setData((prev) => ({
+            ...prev,
+            ...getProjectBySlug(copy, slug),
+            markdown,
+          }));
+        }
       } catch (error) {
-        setData((prev) => ({ ...prev, error }));
+        if (!cancelled) {
+          setData((prev) => ({ ...prev, error }));
+        }
       }
     };
 
     fetchMarkdown();
+
+    return () => {
+      cancelled = true;
+    };
   }, [slug]);
 
   return { ...data };
