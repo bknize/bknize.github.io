@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import useAspectResize from '../useAspectResize';
+import useAspectResize from './useAspectResize';
 
 const FRAME_PROPORTION = 1.78;
 const FRAMES = 25;

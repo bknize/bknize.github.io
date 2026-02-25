@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Qualification from '../Qualifications';
+import Qualification from './Qualifications';
 
 jest.mock('mobx-react-lite', () => ({
   observer: (component: React.FC) => component,

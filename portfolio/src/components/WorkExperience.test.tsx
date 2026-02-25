@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import WorkExperience from '../WorkExperience';
+import WorkExperience from './WorkExperience';
 
 jest.mock('mobx-react-lite', () => ({
   observer: (component: React.FC) => component,
@@ -12,7 +12,7 @@ jest.mock('react-router', () => ({
   ),
 }));
 
-jest.mock('../../utils/splatterState', () => ({
+jest.mock('../utils/splatterState', () => ({
   splatterState: {
     section: { name: '', sprite: '', paint: '' },
   },
@@ -20,7 +20,7 @@ jest.mock('../../utils/splatterState', () => ({
 
 const mockSplatter = jest.requireMock<{
   splatterState: { section: { name: string; sprite: string; paint: string } };
-}>('../../utils/splatterState');
+}>('../utils/splatterState');
 
 const mockJob = {
   id: 'job1',

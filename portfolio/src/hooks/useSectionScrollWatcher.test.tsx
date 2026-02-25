@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import useSectionScrollWatcher from '../useSectionScrollWatcher';
+import useSectionScrollWatcher from './useSectionScrollWatcher';
 import { useInView } from 'motion/react';
 
 const mockSetSection = jest.fn();
@@ -8,7 +8,7 @@ jest.mock('motion/react', () => ({
   useInView: jest.fn(() => false),
 }));
 
-jest.mock('../../utils/splatterState', () => ({
+jest.mock('../utils/splatterState', () => ({
   splatterState: {
     setSection: (...args: [unknown]) => mockSetSection(...args),
   },

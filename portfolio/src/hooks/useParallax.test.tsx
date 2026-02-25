@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import useParallax from '../useParallax';
+import useParallax from './useParallax';
 import { useTransform } from 'motion/react';
 
 jest.mock('motion/react', () => ({
@@ -26,7 +26,7 @@ describe('useParallax', () => {
   });
 
   it('returns the MotionValue from useTransform', () => {
-    const expected = { get: () => 42 };
+    const expected = { get: () => 42 } as never;
     mockUseTransform.mockReturnValue(expected);
 
     const mockValue = { get: () => 0 } as never;

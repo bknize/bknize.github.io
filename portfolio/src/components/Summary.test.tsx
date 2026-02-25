@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Summary from '../Summary';
+import Summary from './Summary';
 
 jest.mock('react-router', () => ({
   Link: ({ children, to, ...props }: { children: React.ReactNode; to: string; [k: string]: unknown }) => (

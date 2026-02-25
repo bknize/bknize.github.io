@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import useCaseStudy from '../useCaseStudy';
+import useCaseStudy from './useCaseStudy';
 
-jest.mock('../../routes/homeCopy', () => ({
+jest.mock('../routes/homeCopy', () => ({
   copy: {
     experience: [
       {
