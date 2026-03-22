@@ -1,5 +1,44 @@
 @import "tailwindcss";
-@import "./style/theme.css";
-@import "./style/base.css";
-@import "./style/transition.css";
-@import "./style/title.css";
+
+@theme inline {
+  --color-cmyk-cyan: #00AEEF;
+  --color-cmyk-magenta: #EC008C;
+  --color-cmyk-yellow: #FFF200;
+  --color-cmyk-key: #1A1A1A;
+  --color-cmyk-dark: #111111;
+
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-cmyk-key);
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-cmyk-magenta);
+    color: #ffffff;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #555;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--color-cmyk-cyan) !important;
+  }
+}
