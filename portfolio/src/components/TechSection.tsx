@@ -3,41 +3,70 @@ import { motion, useInView } from "motion/react";
 import { cn } from "../lib/utils.ts";
 import { SectionHeader } from "./SectionHeader.tsx";
 
+type Category = "lang" | "arch" | "lib" | "method";
+
 type Tech = {
   name: string;
-  category: "language" | "framework" | "styling" | "tool";
-  years?: number;
+  category: Category;
 };
 
 const techs: Tech[] = [
-  { name: "TypeScript", category: "language", years: 8 },
-  { name: "JavaScript", category: "language", years: 9 },
-  { name: "HTML5", category: "language", years: 9 },
-  { name: "CSS3", category: "language", years: 9 },
-  { name: "React", category: "framework", years: 3 },
-  { name: "Vue", category: "framework", years: 5 },
-  { name: "Angular", category: "framework", years: 5 },
-  { name: "Node.js", category: "framework", years: 5 },
-  { name: "Tailwind", category: "styling", years: 4 },
-  { name: "Styled Components", category: "styling", years: 3 },
-  { name: "Framer Motion", category: "styling", years: 1 },
-  { name: "Storybook", category: "tool", years: 2 },
-  { name: "Figma", category: "tool", years: 5 },
-  { name: "Webpack", category: "tool", years: 5 },
-  { name: "Vite", category: "tool", years: 3 },
-  { name: "Jest / Vitest", category: "tool", years: 1 },
-  { name: "Playwright", category: "tool", years: 3 },
-  { name: "Git / GitHub", category: "tool", years: 7 },
+  { name: "React", category: "lang" },
+  { name: "CSS3", category: "lang" },
+  { name: "HTML5", category: "lang" },
+  { name: "JavaScript", category: "lang" },
+  { name: "TypeScript", category: "lang" },
+  { name: "Angular", category: "lang" },
+  { name: "Vue", category: "lang" },
+  { name: "Aurelia", category: "lang" },
+  { name: "Tailwind", category: "lang" },
+  { name: "SASS", category: "lang" },
+  { name: "Bootstrap", category: "lang" },
+
+  { name: "AI Integration", category: "arch" },
+  { name: "Design Systems", category: "arch" },
+  { name: "Component-based Architecture", category: "arch" },
+  { name: "Atomic Design", category: "arch" },
+  { name: "State Management", category: "arch" },
+  { name: "Performance Optimization", category: "arch" },
+  { name: "Responsive Design", category: "arch" },
+  { name: "REST APIs", category: "arch" },
+  { name: "Accessibility", category: "arch" },
+
+  { name: "MUI", category: "lib" },
+  { name: "Redux", category: "lib" },
+  { name: "MobX", category: "lib" },
+  { name: "NgRx", category: "lib" },
+  { name: "rxjs", category: "lib" },
+  { name: "Playwright", category: "lib" },
+  { name: "Selenium", category: "lib" },
+  { name: "Swagger", category: "lib" },
+  { name: "Postman", category: "lib" },
+  { name: "Figma", category: "lib" },
+  { name: "Storybook", category: "lib" },
+  { name: "D3", category: "lib" },
+  { name: "React Motion", category: "lib" },
+  { name: "Chart.js", category: "lib" },
+  { name: "npm", category: "lib" },
+  { name: "Vite", category: "lib" },
+
+  { name: "Agile", category: "method" },
+  { name: "UI/UX Design", category: "method" },
+  { name: "CI/CD", category: "method" },
+  { name: "Jira", category: "method" },
+  { name: "GitHub", category: "method" },
+  { name: "GitLab", category: "method" },
+  { name: "Azure DevOps", category: "method" },
 ];
 
-const categoryConfig = {
-  language: { label: "Language", colorClass: "text-cmyk-cyan", dotClass: "bg-cmyk-cyan", bgStyle: "rgba(0,174,239,0.08)", borderStyle: "#00AEEF25", barColor: "#00AEEF" },
-  framework: { label: "Framework / Library", colorClass: "text-cmyk-magenta", dotClass: "bg-cmyk-magenta", bgStyle: "rgba(236,0,140,0.08)", borderStyle: "#EC008C25", barColor: "#EC008C" },
-  styling: { label: "Styling & Design", colorClass: "text-cmyk-yellow", dotClass: "bg-cmyk-yellow", bgStyle: "rgba(255,242,0,0.08)", borderStyle: "#FFF20025", barColor: "#FFF200" },
-  tool: { label: "Tooling & Testing", colorClass: "text-white", dotClass: "bg-white", bgStyle: "rgba(255,255,255,0.06)", borderStyle: "#ffffff25", barColor: "#ffffff" },
-} as const;
+const categoryConfig: Record<Category, { label: string; colorClass: string; dotClass: string; bgStyle: string; borderStyle: string; barColor: string }> = {
+  lang:   { label: "Languages & Frameworks",      colorClass: "text-cmyk-cyan",    dotClass: "bg-cmyk-cyan",    bgStyle: "rgba(0,174,239,0.08)",   borderStyle: "#00AEEF25", barColor: "#00AEEF" },
+  arch:   { label: "Architecture & Infrastructure", colorClass: "text-cmyk-magenta", dotClass: "bg-cmyk-magenta", bgStyle: "rgba(236,0,140,0.08)",   borderStyle: "#EC008C25", barColor: "#EC008C" },
+  lib:    { label: "Libraries & Tools",            colorClass: "text-cmyk-yellow",  dotClass: "bg-cmyk-yellow",  bgStyle: "rgba(255,242,0,0.08)",   borderStyle: "#FFF20025", barColor: "#FFF200" },
+  method: { label: "Versioning & Methodologies",   colorClass: "text-white",        dotClass: "bg-white",        bgStyle: "rgba(255,255,255,0.06)", borderStyle: "#ffffff25", barColor: "#ffffff" },
+};
 
-const categories = ["language", "framework", "styling", "tool"] as const;
+const categories: Category[] = ["lang", "arch", "lib", "method"];
 
 const proficiencies = [
   { skill: "React / TypeScript", pct: 96, color: "#EC008C" },
@@ -117,16 +146,6 @@ export function TechSection() {
                       <span className="text-white text-[0.85rem] font-medium">
                         {tech.name}
                       </span>
-                      {tech.years && (
-                        <span
-                          className={cn(
-                            "text-[0.65rem] font-mono opacity-80",
-                            config.colorClass
-                          )}
-                        >
-                          {tech.years}y
-                        </span>
-                      )}
                     </div>
                   ))}
                 </div>

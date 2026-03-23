@@ -75,7 +75,7 @@ export function HeroSection() {
 
         <p className="text-[#aaa] max-w-[520px] leading-relaxed text-[1.05rem] mb-10">
           I craft high-performance, visually striking web experiences.
-          Specializing in React, TypeScript, and design systems — turning
+          Proficient in modern frontend technologies and design systems — turning
           complex problems into elegant interfaces.
         </p>
 
@@ -85,7 +85,7 @@ export function HeroSection() {
             onClick={() => scrollToSection("work")}
             className="bg-cmyk-magenta text-white font-semibold text-[0.85rem] uppercase tracking-[0.1em] px-8 py-3.5 hover:opacity-90 transition-opacity cursor-pointer"
           >
-            View My Work
+            My Work
           </button>
           <button
             onClick={() => scrollToSection("contact")}

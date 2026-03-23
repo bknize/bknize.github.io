@@ -1,69 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router";
 import { SectionHeader } from "./SectionHeader.tsx";
 import { GradientLine } from "./GradientLine.tsx";
-
-type Project = {
-  id: number;
-  company: string;
-  role: string;
-  period: string;
-  type: string;
-  description: string;
-  tags: string[];
-  accent: string;
-  index: string;
-};
-
-const projects: Project[] = [
-  {
-    id: 1,
-    company: "Glassman Technology Group",
-    role: "Senior Design Engineer",
-    period: "2024 – 2025",
-    type: "Medtech",
-    description:
-      "Built complex workflow for resolving errors in cms-1500 forms from users or AI Agents. Implemented Tailwind design system across multiple apps and multiple tech stacks.",
-    tags: ["React", "TypeScript", "Tailwind", "Figma", "HTMX", "Django"],
-    accent: "#00AEEF",
-    index: "01",
-  },
-  {
-    id: 2,
-    company: "Venminder",
-    role: "Senior Frontend Engineer",
-    period: "2021 – 2024",
-    type: "Design System",
-    description:
-      "Architected and launched a bespoke component library for Venminder's UI framework in partnership with the design team. Lead a front-end team responsible for UI quality control by organizing initiatives.",
-    tags: ["TypeScript", "SASS", "Figma", "Storybook"],
-    accent: "#EC008C",
-    index: "02",
-  },
-  {
-    id: 3,
-    company: "Venminder",
-    role: "Senior Frontend Engineer",
-    period: "2021 - 2024",
-    type: "Fintech SAAS",
-    description:
-      "Engineered state management system for Venminder's Fintech SAAS.",
-    tags: ["TypeScript", "Redux", "State Management"],
-    accent: "#FFF200",
-    index: "03",
-  },
-  {
-    id: 4,
-    company: "CSE Software",
-    role: "Frontend Engineer",
-    period: "2018 – 2021",
-    type: "Industrial",
-    description:
-      "Built data-dense CRUD interfaces for industrial equipment management systems.",
-    tags: ["Angular", "Vue", "TypeScript", "SASS"],
-    accent: "#ffffff",
-    index: "04",
-  },
-];
+import { projects } from "../data/projects.ts";
 
 export function WorkHistory() {
   return (
@@ -79,15 +18,16 @@ export function WorkHistory() {
           titleColorClass="text-cmyk-magenta"
           heading="Work"
           subheading="History"
-          description="7+ years building products across industries — from design systems to high-traffic commerce platforms."
+          description="9+ years building products across industries — from design systems to high-traffic medtech SAAS."
         />
 
         {/* Projects list */}
         <div className="flex flex-col">
           {projects.map((project, i) => (
-            <div
+            <Link
               key={project.id}
-              className={`group py-8 px-4 cursor-pointer border-b border-white/10 bg-transparent transition-colors duration-200 hover:bg-white/2 ${
+              to={`/case-study/${project.slug}`}
+              className={`group block py-8 px-4 no-underline border-b border-white/10 bg-transparent transition-colors duration-200 hover:bg-white/2 ${
                 i === 0 ? "border-t border-white/10" : ""
               }`}
               style={{ "--accent": project.accent } as React.CSSProperties}
@@ -153,7 +93,7 @@ export function WorkHistory() {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

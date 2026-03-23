@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Send,
   Github,
@@ -11,6 +11,23 @@ import {
 } from "lucide-react";
 import { GradientLine } from "./GradientLine.tsx";
 import { SectionHeader } from "./SectionHeader.tsx";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select.tsx";
+
+const UNSTATIC_ENDPOINT = import.meta.env.VITE_UNSTATIC_ENDPOINT as string | undefined;
+const FORM_ACTION = UNSTATIC_ENDPOINT
+  ? `https://forms.un-static.com/forms/${UNSTATIC_ENDPOINT}`
+  : undefined;
+
+/** URL un-static redirects back to after a successful submission.
+ *  Includes ?success=1 so the SPA can detect it, and #/ so HashRouter
+ *  renders the home route. */
+const REDIRECT_URL = `${window.location.origin}${import.meta.env.BASE_URL}?success=1#/`;
 
 const socialLinks = [
   { icon: Github, label: "GitHub", href: "https://github.com/bknize", hoverClass: "hover:text-white hover:border-white/30" },
@@ -19,27 +36,38 @@ const socialLinks = [
   { icon: Mail, label: "Email", href: "mailto:bknize@gmail.com", hoverClass: "hover:text-cmyk-yellow hover:border-cmyk-yellow/30" },
 ];
 
-export function ContactSection() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [copied, setCopied] = useState(false);
+function isSuccessRedirect() {
+  return new URLSearchParams(window.location.search).has("success");
+}
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+export function ContactSection() {
+  const [submitted, setSubmitted] = useState(isSuccessRedirect);
+  const [copied, setCopied] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (honeypotRef.current?.value) {
+      e.preventDefault();
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  // When arriving via un-static redirect, scroll into view
+  useEffect(() => {
+    if (submitted) {
+      requestAnimationFrame(() => {
+        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  }, [submitted]);
+
+  const handleSendAnother = () => {
+    // Strip ?success=1 from the URL without triggering a navigation
+    window.history.replaceState(
+      {},
+      "",
+      window.location.pathname + window.location.hash
+    );
+    setSubmitted(false);
   };
 
   const copyEmail = () => {
@@ -54,11 +82,6 @@ export function ContactSection() {
       className="relative bg-cmyk-dark py-28 overflow-hidden"
     >
       <GradientLine className="absolute top-0 left-0 right-0" />
-
-      {/* Large background text */}
-      <div className="absolute -bottom-15 -left-5 text-[22vw] font-bold text-transparent leading-none select-none z-0 hidden md:block [letter-spacing:-0.05em] [-webkit-text-stroke:1px_rgba(255,255,255,0.03)]">
-        LET'S
-      </div>
 
       <div className="relative z-1 max-w-7xl mx-auto px-6">
         <SectionHeader
@@ -88,6 +111,7 @@ export function ContactSection() {
                 </p>
               </div>
               <button
+                type="button"
                 onClick={copyEmail}
                 className={`p-2 border transition-all duration-200 cursor-pointer ${
                   copied
@@ -130,7 +154,7 @@ export function ContactSection() {
           {/* Right: Contact form */}
           <div>
             {submitted ? (
-              <div className="border border-cmyk-cyan bg-cmyk-cyan/[0.06] p-12 text-center">
+              <div className="border border-cmyk-cyan bg-cmyk-cyan/6 p-12 text-center">
                 <div className="w-12 h-12 rounded-full bg-cmyk-cyan/15 border-2 border-cmyk-cyan flex items-center justify-center mx-auto mb-6">
                   <Check size={22} className="text-cmyk-cyan" />
                 </div>
@@ -141,17 +165,38 @@ export function ContactSection() {
                   Thanks for reaching out. I'll get back to you within 24 hours.
                 </p>
                 <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setForm({ name: "", email: "", subject: "", message: "" });
-                  }}
-                  className="mt-6 text-cmyk-cyan text-[0.8rem] tracking-[0.1em] cursor-pointer bg-transparent border-none"
+                  type="button"
+                  onClick={handleSendAnother}
+                  className="mt-6 text-cmyk-cyan text-[0.8rem] tracking-widest cursor-pointer bg-transparent border-none"
                 >
                   SEND ANOTHER →
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form
+                method="post"
+                action={FORM_ACTION}
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-4"
+              >
+                {/* Un-static: redirect after successful submission */}
+                <input type="hidden" name="_redirect" value={REDIRECT_URL} />
+                {/* Un-static: email subject line */}
+                <input type="hidden" name="_subject" value="Portfolio Contact Form" />
+
+                {/* Honeypot: invisible to humans, bots fill it → submission blocked */}
+                <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px] overflow-hidden">
+                  <label htmlFor="contact-pot">Leave this empty</label>
+                  <input
+                    ref={honeypotRef}
+                    id="contact-pot"
+                    name="_email"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-gray-600 text-[0.7rem] tracking-[0.15em] block mb-1.5 font-normal">
@@ -159,11 +204,9 @@ export function ContactSection() {
                     </label>
                     <input
                       name="name"
-                      value={form.name}
-                      onChange={handleChange}
                       required
                       placeholder="Your name"
-                      className="w-full bg-white/[0.04] border border-white/10 text-white px-4 py-3.5 text-[0.9rem] outline-none transition-colors"
+                      className="w-full bg-white/4 border border-white/10 text-white px-4 py-3.5 text-[0.9rem] outline-none transition-colors"
                     />
                   </div>
                   <div>
@@ -173,41 +216,36 @@ export function ContactSection() {
                     <input
                       name="email"
                       type="email"
-                      value={form.email}
-                      onChange={handleChange}
                       required
                       placeholder="your@email.com"
-                      className="w-full bg-white/[0.04] border border-white/10 text-white px-4 py-3.5 text-[0.9rem] outline-none transition-colors"
+                      className="w-full bg-white/4 border border-white/10 text-white px-4 py-3.5 text-[0.9rem] outline-none transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-gray-600 text-[0.7rem] tracking-[0.15em] block mb-1.5 font-normal">
+                  <label
+                    htmlFor="contact-subject"
+                    className="text-gray-600 text-[0.7rem] tracking-[0.15em] block mb-1.5 font-normal"
+                  >
                     SUBJECT
                   </label>
-                  <select
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    className="w-full bg-white/[0.04] border border-white/10 text-white px-4 py-3.5 text-[0.9rem] outline-none appearance-none transition-colors"
-                  >
-                    <option value="" className="bg-cmyk-key">
-                      Select a topic...
-                    </option>
-                    <option value="fulltime" className="bg-cmyk-key">
-                      Full-time Opportunity
-                    </option>
-                    <option value="contract" className="bg-cmyk-key">
-                      Contract / Freelance
-                    </option>
-                    <option value="collab" className="bg-cmyk-key">
-                      Collaboration
-                    </option>
-                    <option value="other" className="bg-cmyk-key">
-                      Other
-                    </option>
-                  </select>
+                  {/* name prop causes Radix to emit a hidden <select> for native form submission */}
+                  <Select name="subject">
+                    <SelectTrigger id="contact-subject" className="w-full">
+                      <SelectValue placeholder="Select a topic..." />
+                    </SelectTrigger>
+                    <SelectContent sideOffset={4}>
+                      <SelectItem value="fulltime">
+                        Full-time Opportunity
+                      </SelectItem>
+                      <SelectItem value="contract">
+                        Contract / Freelance
+                      </SelectItem>
+                      <SelectItem value="collab">Collaboration</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div>
@@ -216,18 +254,16 @@ export function ContactSection() {
                   </label>
                   <textarea
                     name="message"
-                    value={form.message}
-                    onChange={handleChange}
                     required
                     placeholder="Tell me about your project..."
                     rows={5}
-                    className="w-full bg-white/[0.04] border border-white/10 text-white px-4 py-3.5 text-[0.9rem] outline-none resize-y transition-colors"
+                    className="w-full bg-white/4 border border-white/10 text-white px-4 py-3.5 text-[0.9rem] outline-none resize-y transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="self-start flex items-center justify-center gap-2 bg-cmyk-magenta text-white font-semibold text-[0.85rem] uppercase tracking-[0.1em] px-8 py-4 border-none cursor-pointer hover:opacity-90 transition-opacity"
+                  className="self-start flex items-center justify-center gap-2 bg-cmyk-magenta text-white font-semibold text-[0.85rem] uppercase tracking-widest px-8 py-4 border-none cursor-pointer hover:opacity-90 transition-opacity"
                 >
                   SEND MESSAGE
                   <Send size={14} />
