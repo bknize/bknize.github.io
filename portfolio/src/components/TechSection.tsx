@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { cn } from "../lib/utils.ts";
+import { AnimatedTechPillList, type CmykColor } from "./AnimatedTechPillList.tsx";
 import { SectionHeader } from "./SectionHeader.tsx";
 
 type Category = "lang" | "arch" | "lib" | "method";
@@ -59,14 +60,23 @@ const techs: Tech[] = [
   { name: "Azure DevOps", category: "method" },
 ];
 
-const categoryConfig: Record<Category, { label: string; colorClass: string; dotClass: string; bgStyle: string; borderStyle: string; barColor: string }> = {
-  lang:   { label: "Languages & Frameworks",      colorClass: "text-cmyk-cyan",    dotClass: "bg-cmyk-cyan",    bgStyle: "rgba(0,174,239,0.08)",   borderStyle: "#00AEEF25", barColor: "#00AEEF" },
-  arch:   { label: "Architecture & Infrastructure", colorClass: "text-cmyk-magenta", dotClass: "bg-cmyk-magenta", bgStyle: "rgba(236,0,140,0.08)",   borderStyle: "#EC008C25", barColor: "#EC008C" },
-  lib:    { label: "Libraries & Tools",            colorClass: "text-cmyk-yellow",  dotClass: "bg-cmyk-yellow",  bgStyle: "rgba(255,242,0,0.08)",   borderStyle: "#FFF20025", barColor: "#FFF200" },
-  method: { label: "Versioning & Methodologies",   colorClass: "text-white",        dotClass: "bg-white",        bgStyle: "rgba(255,255,255,0.06)", borderStyle: "#ffffff25", barColor: "#ffffff" },
+const categoryConfig: Record<Category, { label: string; colorClass: string; dotClass: string; barColor: string; cmyk: CmykColor }> = {
+  lang:   { label: "Languages & Frameworks",       colorClass: "text-cmyk-cyan",    dotClass: "bg-cmyk-cyan",    barColor: "#00AEEF", cmyk: "C" },
+  arch:   { label: "Architecture & Infrastructure", colorClass: "text-cmyk-magenta", dotClass: "bg-cmyk-magenta", barColor: "#EC008C", cmyk: "M" },
+  lib:    { label: "Libraries & Tools",             colorClass: "text-cmyk-yellow",  dotClass: "bg-cmyk-yellow",  barColor: "#FFF200", cmyk: "Y" },
+  method: { label: "Versioning & Methodologies",    colorClass: "text-white",        dotClass: "bg-white",        barColor: "#ffffff", cmyk: "K" },
 };
 
 const categories: Category[] = ["lang", "arch", "lib", "method"];
+
+/** Stagger index for pills within the tech grid (left-to-right, top-to-bottom categories). */
+function pillStaggerIndex(cat: Category): number {
+  const i = categories.indexOf(cat);
+  return categories.slice(0, i).reduce(
+    (sum, c) => sum + techs.filter((t) => t.category === c).length,
+    0
+  );
+}
 
 const proficiencies = [
   { skill: "React / TypeScript", pct: 96, color: "#EC008C" },
@@ -93,6 +103,9 @@ function ProgressBar({ pct, color }: { pct: number; color: string }) {
 }
 
 export function TechSection() {
+  const pillsGridRef = useRef<HTMLDivElement>(null);
+  const pillsInView = useInView(pillsGridRef, { once: true, margin: "-80px" });
+
   return (
     <section
       id="tech"
@@ -116,10 +129,14 @@ export function TechSection() {
         />
 
         {/* Tech grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          ref={pillsGridRef}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           {categories.map((cat) => {
             const config = categoryConfig[cat];
             const items = techs.filter((t) => t.category === cat);
+            const baseIndex = pillStaggerIndex(cat);
             return (
               <div key={cat} className="border border-white/8 p-7">
                 <div className="flex items-center gap-3 mb-6">
@@ -133,22 +150,12 @@ export function TechSection() {
                     {config.label.toUpperCase()}
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="flex items-center gap-2 px-3.5 py-1.5"
-                      style={{
-                        backgroundColor: config.bgStyle,
-                        border: `1px solid ${config.borderStyle}`,
-                      }}
-                    >
-                      <span className="text-white text-[0.85rem] font-medium">
-                        {tech.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <AnimatedTechPillList
+                  tags={items.map((t) => t.name)}
+                  cmyk={config.cmyk}
+                  inView={pillsInView}
+                  staggerBaseIndex={baseIndex}
+                />
               </div>
             );
           })}

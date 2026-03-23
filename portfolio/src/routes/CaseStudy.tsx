@@ -4,6 +4,7 @@ import { NavBar } from "../components/NavBar.tsx";
 import { FooterSection } from "../components/FooterSection.tsx";
 import { CmykRule } from "../components/CmykRule.tsx";
 import { GradientLine } from "../components/GradientLine.tsx";
+import { AnimatedTechPillList } from "../components/AnimatedTechPillList.tsx";
 import { MarkdownBody } from "../components/MarkdownBody.tsx";
 import { PageTransition } from "../components/PageTransition.tsx";
 import { getProjectBySlug, projects } from "../data/projects.ts";
@@ -95,16 +96,7 @@ export default function CaseStudy() {
             {project.description}
           </p>
 
-          <div className="flex flex-wrap gap-2 mt-8">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="bg-white/5 text-gray-400 text-[0.75rem] font-mono px-3 py-1.5 border border-white/8"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          <AnimatedTechPillList tags={project.tags} className="mt-8" />
         </div>
       </section>
 
@@ -160,21 +152,7 @@ export default function CaseStudy() {
                   <p className="text-gray-500 text-[0.7rem] tracking-[0.2em] font-semibold mb-4">
                     TECH STACK
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[0.7rem] font-mono px-2 py-1"
-                        style={{
-                          color: project.accent,
-                          backgroundColor: `${project.accent}15`,
-                          border: `1px solid ${project.accent}25`,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <AnimatedTechPillList tags={project.tags} />
                 </div>
               </div>
             </div>

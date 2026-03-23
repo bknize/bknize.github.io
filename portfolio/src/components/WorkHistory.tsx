@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
+import { AnimatedTechPillList } from "./AnimatedTechPillList.tsx";
 import { SectionHeader } from "./SectionHeader.tsx";
 import { GradientLine } from "./GradientLine.tsx";
 import { projects } from "../data/projects.ts";
@@ -73,16 +74,7 @@ export function WorkHistory() {
                   <p className="text-gray-400 leading-relaxed text-[0.9rem]">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-white/5 text-gray-400 text-[0.7rem] font-mono px-2.5 py-1 border border-white/8"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <AnimatedTechPillList tags={project.tags} className="mt-4" />
                 </div>
 
                 {/* CTA */}
@@ -96,10 +88,6 @@ export function WorkHistory() {
             </Link>
           ))}
         </div>
-
-        <p className="text-gray-600 text-xs tracking-widest mt-8 text-right">
-          — MORE WORK AVAILABLE ON REQUEST
-        </p>
       </div>
     </section>
   );
