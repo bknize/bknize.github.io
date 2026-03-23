@@ -1,5 +1,6 @@
 import { use, Suspense } from "react";
 import ReactMarkdown from "react-markdown";
+import { useNavigate } from "react-router";
 import { loadMarkdown } from "../lib/utils.ts";
 
 // Module-level cache so the same promise is returned on every re-render,
@@ -15,6 +16,7 @@ function getCachedMarkdown(filename: string): Promise<string | null> {
 
 function MarkdownContent({ filename }: { filename: string }) {
   const content = use(getCachedMarkdown(filename));
+  const navigate = useNavigate();
   if (!content) return null;
 
   return (
@@ -46,6 +48,28 @@ function MarkdownContent({ filename }: { filename: string }) {
     >
       <ReactMarkdown
         components={{
+          // Internal hash links (e.g. #/case-study/...) are routed through
+          // React Router so the page transition animation plays.
+          a: ({ href, children }) => {
+            if (href?.startsWith("#/")) {
+              return (
+                <a
+                  href={href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(href.slice(1)); // strip leading '#' to get the path
+                  }}
+                >
+                  {children}
+                </a>
+              );
+            }
+            return (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {children}
+              </a>
+            );
+          },
           code: ({ children }) => (
             <code className="font-mono text-[0.82em] bg-white/8 text-cmyk-cyan px-1.5 py-0.5 rounded-sm">
               {children}

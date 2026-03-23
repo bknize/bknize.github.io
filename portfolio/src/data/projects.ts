@@ -26,7 +26,7 @@ export const projects: Project[] = [
     period: "2024 – 2025",
     type: "Medtech",
     description:
-      "Built complex workflow for resolving errors in cms-1500 forms from users or AI Agents. Implemented Tailwind design system across multiple apps and multiple tech stacks.",
+      "Built a complex workflow for resolving errors in CMS-1500 forms from users or AI agents. Implemented a Tailwind design system across multiple apps and multiple tech stacks.",
     tags: ["React", "TypeScript", "Tailwind", "Figma", "HTMX", "Django"],
     accent: "#00AEEF",
     index: "01",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     period: "2021 – 2024",
     type: "Design System",
     description:
-      "Architected and launched a bespoke component library for Venminder's UI framework in partnership with the design team. Lead a front-end team responsible for UI quality control by organizing initiatives.",
+      "Architected and launched a bespoke component library for Venminder's UI framework in partnership with the design team. Led the Frontend Guild, responsible for UI quality across all product teams.",
     tags: ["TypeScript", "SASS", "Figma", "Storybook"],
     accent: "#EC008C",
     index: "02",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     accent: "#FFF200",
     index: "03",
     challenge:
-      "The application's state layer had grown organically into a tangle of ad-hoc patterns — prop drilling, scattered local state, and inconsistent data fetching. This made features slow to build and bugs hard to trace.",
+      "The application's state layer had grown organically into a tangle of ad-hoc patterns: prop drilling, scattered local state, and inconsistent data fetching. This made features slow to build and bugs hard to trace.",
     approach:
       "Designed a normalized Redux architecture with clear domain boundaries, typed selectors, and middleware for side effects. Introduced patterns for optimistic updates and cache invalidation that the team could follow consistently.",
     outcome:
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     accent: "#ffffff",
     index: "04",
     challenge:
-      "Industrial equipment management requires displaying large volumes of hierarchical data — asset trees, maintenance schedules, sensor readings — in interfaces that field technicians can navigate efficiently on tablets and desktops.",
+      "Industrial equipment management requires displaying large volumes of hierarchical data (asset trees, maintenance schedules, sensor readings) in interfaces that field technicians can navigate efficiently on tablets and desktops.",
     approach:
       "Built performant data-grid components with virtual scrolling, inline editing, and real-time filtering. Worked across Angular and Vue codebases depending on the client, maintaining consistent UX patterns through a shared SASS design framework.",
     outcome:
@@ -120,7 +120,7 @@ export const projects: Project[] = [
       "Shared SASS design framework across projects",
       "Tablet-optimized interfaces for field use",
     ],
-    markdownFile: "soc",
+    markdownFile: "infinitetree",
   },
 ];
 
