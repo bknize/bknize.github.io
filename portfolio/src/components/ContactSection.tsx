@@ -118,9 +118,9 @@ export function ContactSection() {
           {/* Left: Info */}
           <div>
             <p className="text-gray-400 leading-relaxed mb-10 text-base max-w-[420px]">
-              I'm currently open to new opportunities — whether it's a
-              full-time role, a contract engagement, or an interesting side
-              project. Let's connect!
+              I'm always up for a conversation about interesting frontend
+              work: full-time, contract, or a side project that's gotten out of
+              hand. Say hi.
             </p>
 
             {/* Email with copy */}
@@ -185,7 +185,7 @@ export function ContactSection() {
                   Message Sent!
                 </p>
                 <p className="text-gray-400 text-[0.9rem]">
-                  Thanks for reaching out. I'll get back to you within 24 hours.
+                  Thanks for reaching out. I'll get back to you soon.
                 </p>
                 <button
                   type="button"

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { useInView } from "motion/react";
 import { cn } from "../lib/utils.ts";
 import { AnimatedTechPillList, type CmykColor } from "./AnimatedTechPillList.tsx";
 import { SectionHeader } from "./SectionHeader.tsx";
@@ -23,8 +23,12 @@ const techs: Tech[] = [
   { name: "Tailwind", category: "lang" },
   { name: "SASS", category: "lang" },
   { name: "Bootstrap", category: "lang" },
+  { name: "Lit", category: "lang" },
+  { name: "Ionic", category: "lang" },
 
-  { name: "AI Integration", category: "arch" },
+  { name: "AI-Assisted Engineering", category: "arch" },
+  { name: "Spec-Driven Development", category: "arch" },
+  { name: "MCP Integrations", category: "arch" },
   { name: "Design Systems", category: "arch" },
   { name: "Component-based Architecture", category: "arch" },
   { name: "Atomic Design", category: "arch" },
@@ -50,6 +54,11 @@ const techs: Tech[] = [
   { name: "Chart.js", category: "lib" },
   { name: "npm", category: "lib" },
   { name: "Vite", category: "lib" },
+  { name: "Claude Code", category: "lib" },
+  { name: "Codex", category: "lib" },
+  { name: "Cucumber", category: "lib" },
+  { name: "DuckDB-WASM", category: "lib" },
+  { name: "GitHub Actions", category: "lib" },
 
   { name: "Agile", category: "method" },
   { name: "UI/UX Design", category: "method" },
@@ -78,30 +87,6 @@ function pillStaggerIndex(cat: Category): number {
   );
 }
 
-const proficiencies = [
-  { skill: "React / TypeScript", pct: 96, color: "#EC008C" },
-  { skill: "UI Design / Figma", pct: 85, color: "#00AEEF" },
-  { skill: "UI Architecture", pct: 92, color: "#FFF200" },
-  { skill: "Performance Optimization", pct: 87, color: "#ffffff" },
-];
-
-function ProgressBar({ pct, color }: { pct: number; color: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
-  return (
-    <div ref={ref} className="h-1 bg-white/8 relative">
-      <motion.div
-        className="absolute left-0 top-0 h-full"
-        style={{ backgroundColor: color }}
-        initial={{ width: "0%" }}
-        animate={{ width: inView ? `${pct}%` : "0%" }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-      />
-    </div>
-  );
-}
-
 export function TechSection() {
   const pillsGridRef = useRef<HTMLDivElement>(null);
   const pillsInView = useInView(pillsGridRef, { once: true, margin: "-80px" });
@@ -125,7 +110,7 @@ export function TechSection() {
           titleColorClass="text-cmyk-cyan"
           heading="Tech"
           subheading="Stack"
-          description="A collection of languages, frameworks, and tools I work with every day to build great products."
+          description="Everything I've shipped with, from Aurelia to Lit. The case studies below are what I actually did with it."
         />
 
         {/* Tech grid */}
@@ -159,31 +144,6 @@ export function TechSection() {
               </div>
             );
           })}
-        </div>
-
-        {/* Proficiency bars */}
-        <div className="border border-white/8 mt-8 p-7">
-          <p className="text-gray-600 text-xs tracking-[0.2em] mb-6">
-            CORE PROFICIENCIES
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {proficiencies.map((item) => (
-              <div key={item.skill}>
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300 text-[0.85rem] font-medium">
-                    {item.skill}
-                  </span>
-                  <span
-                    className="text-[0.8rem] font-mono"
-                    style={{ color: item.color }}
-                  >
-                    {item.pct}%
-                  </span>
-                </div>
-                <ProgressBar pct={item.pct} color={item.color} />
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

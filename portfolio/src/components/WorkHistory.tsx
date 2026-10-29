@@ -19,7 +19,7 @@ export function WorkHistory() {
           titleColorClass="text-cmyk-magenta"
           heading="Work"
           subheading="History"
-          description="9+ years building products across industries — from design systems to high-traffic medtech SAAS."
+          description="10 years building products across industries — from design systems to high-traffic medtech SAAS."
         />
 
         {/* Projects list */}

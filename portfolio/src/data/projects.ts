@@ -19,10 +19,37 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 5,
+    slug: "atpco-agentic-ui",
+    company: "ATPCO",
+    role: "Sr. UX Engineer",
+    period: "2025 – Present",
+    type: "Travel Data SaaS",
+    description:
+      "Moved a UX team's AI agents off Figma and onto Storybook, with per-component contracts and a bootstrap that lets designers prototype in production code. Built 1.4M-record filtering and graphing UI streamed with DuckDB-WASM.",
+    tags: ["React", "Angular", "Lit", "Storybook MCP", "Claude Code", "DuckDB-WASM", "Playwright"],
+    accent: "#00AEEF",
+    index: "05",
+    challenge:
+      "Agents mapping Figma designs to the component library through Figma MCP produced drift, duplicated components, and hard-coded values where design tokens should have been. Every PR needed a human to un-teach the agent what the design file had taught it.",
+    approach:
+      "Moved the source of truth from Figma to Storybook. Migrated the component library with per-component agent contracts that enforce atomic layering, React best practices, state management rules, and typing and testing standards. Flipped designers to code-first prototyping through an agent-first bootstrap, and built a migration skill that elevates their prototypes to beta apps under engineering ownership. Claude scopes every instruction Codex executes, in both the orchestrator and multi-model review.",
+    outcome:
+      "Designers spend more time in the prototyping phase and far less in the feedback loop with engineering: stakeholders react to running code, and engineers receive a prototype instead of a handoff. Net, features ship sooner.",
+    highlights: [
+      "Storybook MCP with per-component agent contracts",
+      "Spec-driven delivery: interrogation → phased plan → orchestrator",
+      "Agent-first bootstrap for designer prototyping",
+      "Migration skill from prototype to beta app",
+      "Typed Lit → React bridge for web-component events",
+    ],
+    markdownFile: "agentic",
+  },
+  {
     id: 1,
     slug: "glassman-technology-group",
     company: "Glassman Technology Group",
-    role: "Senior Design Engineer",
+    role: "Software Design Engineer",
     period: "2024 – 2025",
     type: "Medtech",
     description:
@@ -31,11 +58,11 @@ export const projects: Project[] = [
     accent: "#00AEEF",
     index: "01",
     challenge:
-      "CMS-1500 medical claim forms are notoriously complex, with dozens of interdependent fields and strict validation rules. The existing error-resolution workflow was manual and error-prone, leading to costly claim rejections.",
+      "About a million CMS-1500 forms a year go through AI transcription. Even at an optimistic 99%, that's thousands of bad reads, on top of whatever the humans got wrong first. Someone has to fix them, and the fixing UI didn't exist yet.",
     approach:
-      "Designed a guided error-resolution interface that walks users and AI agents through each validation issue step-by-step. Built a shared Tailwind-based design system that unified the UI across React and Django/HTMX frontends, enabling consistent UX regardless of tech stack.",
+      "Three columns: the claim list, the transcribed data, and the original PDF, with every field linked to a hotspot on the form so focusing one zooms the other. Claim data renders the same way everywhere it appears, so users always know where to look. Every edit validates against the same backend logic the pipeline uses. Tailwind glued the React app to the older Django views so nobody could tell where one ended.",
     outcome:
-      "Reduced claim rejection rates significantly and cut error-resolution time. The shared design system enabled faster feature delivery across both applications with a single source of truth for UI components.",
+      "Rejection rates went down, resolution time went down, and both apps now draw from one design system, so a feature built for one ships in the other without a redesign.",
     highlights: [
       "Unified design system across React and HTMX/Django stacks",
       "AI-assisted error resolution workflow for CMS-1500 forms",
@@ -48,25 +75,25 @@ export const projects: Project[] = [
     id: 2,
     slug: "venminder-design-system",
     company: "Venminder",
-    role: "Senior Frontend Engineer",
+    role: "Senior Software Engineer",
     period: "2021 – 2024",
     type: "Design System",
     description:
       "Architected and launched a bespoke component library for Venminder's UI framework in partnership with the design team. Led the Frontend Guild, responsible for UI quality across all product teams.",
-    tags: ["TypeScript", "SASS", "Figma", "Storybook"],
+    tags: ["Aurelia", "TypeScript", "SASS", "Figma", "Storybook"],
     accent: "#EC008C",
     index: "02",
     challenge:
-      "Venminder's fintech platform had accumulated years of inconsistent UI patterns across multiple product teams. Design-to-dev handoff was slow and error-prone, with no shared component vocabulary.",
+      "Twelve-ish Aurelia components, undocumented, untyped, and a select with thirty bindable properties. Nobody wanted to use them, so every team rebuilt its own. Aurelia also doesn't scope CSS, so styles leaked everywhere.",
     approach:
-      "Partnered with the design team to audit existing patterns, establish a token system, and build a comprehensive component library from the ground up. Implemented Storybook as the single source of truth, with automated visual regression testing and accessibility audits baked into CI.",
+      "Co-led the Frontend Guild and sat in on the UX team's weekly to build vm-library: a toolbox of small atomic pieces instead of one plug-and-play library. Buttons became CSS-only. The select got a sledgehammer. The grid became one component per table tag, with the config living in the markup. We demoed and tested everything in a homebrewed UI app while reviving the abandoned Aurelia Storybook fork.",
     outcome:
-      "Reduced design-to-dev handoff time and eliminated visual inconsistencies across the platform. The library became the foundation for all new feature development.",
+      "80% of legacy grids replaced within a year, every one that could fit in a sprint. Figma parity hovered around 70%, which was honest for the tools we had. The library became the base for all new UI work.",
     highlights: [
       "Bespoke component library with TypeScript and SASS",
-      "Storybook-driven development with visual regression testing",
+      "Homebrewed demo app for component review while reviving the Aurelia Storybook fork",
       "Design token system bridging Figma and code",
-      "Led front-end quality initiatives across product teams",
+      "Led frontend quality initiatives across product teams",
     ],
     markdownFile: "vmlibrary",
   },
@@ -74,25 +101,25 @@ export const projects: Project[] = [
     id: 3,
     slug: "venminder-state-management",
     company: "Venminder",
-    role: "Senior Frontend Engineer",
+    role: "Senior Software Engineer",
     period: "2021 – 2024",
     type: "Fintech SAAS",
     description:
-      "Engineered state management system for Venminder's Fintech SAAS.",
-    tags: ["TypeScript", "Redux", "State Management"],
+      "Built the state layer, side-effects library, and 400k-record filtering for Venminder's questionnaire CMS, on Aurelia, with polling instead of sockets.",
+    tags: ["Aurelia", "TypeScript", "Redux", "RxJS", "Chart.js", "State Management"],
     accent: "#FFF200",
     index: "03",
     challenge:
-      "The application's state layer had grown organically into a tangle of ad-hoc patterns: prop drilling, scattered local state, and inconsistent data fetching. This made features slow to build and bugs hard to trace.",
+      "Aurelia's store is Redux-flavored but bare: no slices, no effects, plenty of prop drilling and ad-hoc patterns. Then product asked for Google-Docs-style concurrent editing and bulk operations on up to 400,000 records, for clients whose IT departments block web sockets.",
     approach:
-      "Designed a normalized Redux architecture with clear domain boundaries, typed selectors, and middleware for side effects. Introduced patterns for optimistic updates and cache invalidation that the team could follow consistently.",
+      "Wrote an NgRx-style side-effects layer and an RTK-style factory so every async slice came with loading, loaded, and error for free. Locking went per-question instead of per-questionnaire, driven by an RxJS stream of focus, tab, and save events throttled to one heartbeat every two minutes. For the 400k records we built a virtual-scroll proof of concept, hammered the scroll wheel, and threw it out. Filtering plus pagination with two pages preloaded got people to their row faster.",
     outcome:
-      "Stabilized the data layer and dramatically reduced state-related bugs. New features that previously took weeks could be built in days thanks to predictable data flow and reusable selector patterns.",
+      "Concurrent editors see each other's locks without blowing the request budget, and a client with 400k records gets the same experience as one with 300. State is observable, so charts update from the same filtered stream as the grid, and Redux devtools work.",
     highlights: [
-      "Normalized Redux store architecture",
-      "Typed selectors and middleware patterns",
-      "Optimistic update and cache invalidation strategies",
-      "Team-wide state management conventions",
+      "RTK-style async slice factory on aurelia-store",
+      "NgRx-style side-effects middleware",
+      "Per-question edit locks on a two-minute polling budget",
+      "400k-record filtering and pagination with preloaded pages",
     ],
     markdownFile: "questionnaires",
   },
@@ -101,20 +128,21 @@ export const projects: Project[] = [
     slug: "cse-software",
     company: "CSE Software",
     role: "Frontend Engineer",
-    period: "2018 – 2021",
+    period: "2016 – 2021",
     type: "Industrial",
     description:
-      "Built data-dense CRUD interfaces for industrial equipment management systems.",
-    tags: ["Angular", "Vue", "TypeScript", "SASS"],
+      "Built hybrid mobile and tablet apps for Caterpillar — an Ionic launcher for machine simulation programs and a PWA for assessing remote job sites — alongside data-dense Angular interfaces for industrial equipment management.",
+    tags: ["Angular", "Ionic", "PWA", "Vue", "TypeScript", "NgRx"],
     accent: "#ffffff",
     index: "04",
     challenge:
-      "Industrial equipment management requires displaying large volumes of hierarchical data (asset trees, maintenance schedules, sensor readings) in interfaces that field technicians can navigate efficiently on tablets and desktops.",
+      "A service-cost tool for Caterpillar machinery: a tree of parts, labor, and sub-parts with no known depth and no known size, used by the same people for eight hours a day. The jQuery version loaded everything at once and worked in the sense that it didn't immediately crash.",
     approach:
-      "Built performant data-grid components with virtual scrolling, inline editing, and real-time filtering. Worked across Angular and Vue codebases depending on the client, maintaining consistent UX patterns through a shared SASS design framework.",
+      "Stopped treating it as a tree. Every record went into NgRx as a flat row with a parent ID and a depth, so the list could virtual-scroll and expand nodes in place. Fetches queued through RxJS with a concurrency cap, skeleton rows held the spot while children loaded, and drag-and-drop stayed within siblings because cross-branch moves weren't worth the bookkeeping.",
     outcome:
-      "Delivered multiple client projects on time with interfaces that handled thousands of records without lag. The shared design framework accelerated onboarding for new projects.",
+      "Arbitrarily large, arbitrarily deep, still responsive, with inline CRUD that survives a row scrolling out of view. The CAT field apps ran on the same discipline: Ionic for the simulator launcher, a PWA for remote job sites.",
     highlights: [
+      "Ionic + PWA field apps for Caterpillar",
       "Virtualized data grids for large datasets",
       "Cross-framework development (Angular & Vue)",
       "Shared SASS design framework across projects",

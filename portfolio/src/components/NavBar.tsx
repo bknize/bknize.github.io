@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X } from "lucide-react";
+import { motion, useScroll as useScrollProgress } from "motion/react";
 import { useScroll } from "../hooks/useScroll.ts";
 import { Logo } from "./Logo.tsx";
 import { HOME_SECTION, NAV_LINKS, type HomeLocationState } from "../nav.ts";
@@ -14,6 +15,7 @@ export function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const { scrollYProgress } = useScrollProgress();
 
   return (
     <nav
@@ -68,7 +70,7 @@ export function NavBar() {
               onClick={() => scrollToSection(HOME_SECTION.contact)}
               className="bg-cmyk-magenta text-white font-semibold text-xs uppercase tracking-widest px-5 py-2 hover:opacity-90 transition-opacity cursor-pointer"
             >
-              Hire Me
+              Contact Me
             </button>
           ) : (
             <Link
@@ -76,7 +78,7 @@ export function NavBar() {
               state={{ scrollTo: HOME_SECTION.contact } satisfies HomeLocationState}
               className="bg-cmyk-magenta text-white font-semibold text-xs uppercase tracking-widest px-5 py-2 hover:opacity-90 transition-opacity no-underline"
             >
-              Hire Me
+              Contact Me
             </Link>
           )}
         </div>
@@ -126,7 +128,7 @@ export function NavBar() {
               }}
               className="text-left bg-cmyk-magenta text-white font-semibold text-xs uppercase tracking-widest px-4 py-2 hover:opacity-90 transition-opacity cursor-pointer"
             >
-              Hire Me
+              Contact Me
             </button>
           ) : (
             <Link
@@ -135,11 +137,18 @@ export function NavBar() {
               onClick={() => setMenuOpen(false)}
               className="text-left bg-cmyk-magenta text-white font-semibold text-xs uppercase tracking-widest px-4 py-2 hover:opacity-90 transition-opacity no-underline"
             >
-              Hire Me
+              Contact Me
             </Link>
           )}
         </div>
       )}
+
+      {/* Reading progress: CMYK rule fills left to right as the page scrolls */}
+      <motion.div
+        aria-hidden
+        className="absolute bottom-0 left-0 h-px w-full origin-left bg-[linear-gradient(90deg,var(--color-cmyk-cyan),var(--color-cmyk-magenta),var(--color-cmyk-yellow),#ffffff)]"
+        style={{ scaleX: scrollYProgress }}
+      />
     </nav>
   );
 }

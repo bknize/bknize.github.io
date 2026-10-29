@@ -1,6 +1,6 @@
 # Background
 
-CSE Software is a consultancy in Peoria, IL, and I joined their front-end team in 2018 as the shop was making a concerted push away from Bootstrap/jQuery toward modern component-based frameworks. The client roster leaned heavily industrial (heavy machinery, fleet services, manufacturing), and the software reflected that. These were not consumer apps. These were tools that actual people sat in front of for eight hours a day, doing very specific, very high-stakes things.
+CSE Software is a consultancy in Peoria, IL. I started there in 2016 and joined the enterprise team in 2018, as the shop was making a concerted push away from Bootstrap/jQuery toward modern component-based frameworks. The client roster leaned heavily industrial (heavy machinery, fleet services, manufacturing), and the software reflected that. These were not consumer apps. These were tools that actual people sat in front of for eight hours a day, doing very specific things with very expensive machines.
 
 The feature I owned was one of those tools. It lived inside a service cost management platform for heavy machinery parts. Technicians and service managers used it to navigate a deeply nested, nondeterminately large tree of relationships: materials, labor, sub-components, each of which could have its own sub-components, all the way down. Think: "What does it cost to fully service this transmission?" and then every part and every hour of labor under that, and every part and every hour under *those*, recursively, with no guaranteed ceiling.
 
@@ -63,7 +63,7 @@ Because items loaded individually and in batches, we needed a way to communicate
 
 We used skeleton loading states: placeholder rows styled to match the shape of a real record, animated with a subtle shimmer. When a node's children were requested, the store immediately added skeleton placeholder entries at the correct depth. When the data resolved, the skeletons were replaced in place. The list never reordered unexpectedly; items appeared where you expected them to appear.
 
-For the users who lived in this screen, this mattered. Predictable, calm loading behavior is a form of respect for someone who's staring at your UI for forty hours a week.
+For the users who lived in this screen, this mattered. If someone stares at your UI forty hours a week, the least you can do is not make the rows jump around on them.
 
 
 # Drag and Drop
@@ -86,4 +86,4 @@ Because the list was virtualized, an open CRUD panel had to be tracked in state 
 
 The rebuild replaced a Bootstrap/jQuery implementation that had become a daily friction point for its power users. The new Angular/NgRx version handled arbitrarily large and deep record sets without loading everything upfront, kept the UI responsive under real usage conditions, and gave users the ability to manage records without leaving the context of what they were working in.
 
-The architecture (flat list, depth metadata, individual batched fetches, concurrency limits) was driven almost entirely by the constraints of the API and the performance requirements of the feature. None of it was clever for its own sake. It was the simplest model that handled the actual problem.
+The architecture (flat list, depth metadata, individual batched fetches, concurrency limits) was driven almost entirely by the constraints of the API and the performance requirements of the feature. None of it was clever for its own sake. It was the simplest thing that survived the API.

@@ -1,11 +1,110 @@
+import { useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  useTransform,
+} from "motion/react";
 import { CmykRule } from "./CmykRule.tsx";
+import { WIPE_DURATION } from "./PageTransition.tsx";
+import { useIsFirstLoad } from "../lib/firstLoad.ts";
 
 const stats = [
-  { value: "9+", label: "Years Experience" },
+  { value: "10", label: "Years Experience" },
   { value: "100+", label: "Features Shipped" },
-  { value: "4", label: "Industries Served" },
+  { value: "5", label: "Industries Served" },
 ];
+
+const NAME_SIZE = "clamp(3rem, 8vw, 7rem)";
+const NAME_CLASS = "font-bold leading-[1.05] tracking-tight";
+
+/** Starting offsets for the C, M, Y plates that snap into register on load. */
+const PLATES = [
+  { color: "var(--color-cmyk-cyan)", x: -18, y: -8 },
+  { color: "var(--color-cmyk-magenta)", x: 14, y: 6 },
+  { color: "var(--color-cmyk-yellow)", x: -6, y: 14 },
+];
+
+function NameText({ stroke }: { stroke: string }) {
+  return (
+    <>
+      Ben
+      <br />
+      <span
+        className="text-transparent"
+        style={{ WebkitTextStroke: `2px ${stroke}` }}
+      >
+        Knize
+      </span>
+    </>
+  );
+}
+
+/** The name, with three misregistered colour plates that converge then fade. */
+function HeroName() {
+  const reduceMotion = useReducedMotion();
+  const isFirstLoad = useIsFirstLoad();
+  const delay = isFirstLoad ? 0.2 : WIPE_DURATION;
+
+  return (
+    <div className="relative">
+      {!reduceMotion &&
+        PLATES.map((plate) => (
+          <motion.div
+            key={plate.color}
+            aria-hidden
+            className={`absolute inset-0 pointer-events-none mix-blend-screen ${NAME_CLASS}`}
+            style={{ fontSize: NAME_SIZE, color: plate.color }}
+            initial={{ x: plate.x, y: plate.y, opacity: 0.9 }}
+            animate={{ x: 0, y: 0, opacity: 0 }}
+            transition={{
+              duration: 1.1,
+              ease: [0.22, 1, 0.36, 1],
+              delay,
+              opacity: { duration: 0.5, delay: delay + 0.8 },
+            }}
+          >
+            <NameText stroke={plate.color} />
+          </motion.div>
+        ))}
+      <h1
+        className={`relative text-white ${NAME_CLASS}`}
+        style={{ fontSize: NAME_SIZE }}
+      >
+        <NameText stroke="#ffffff" />
+      </h1>
+    </div>
+  );
+}
+
+/** Counts up from 0 when scrolled into view; keeps any suffix like "+". */
+function StatValue({ value }: { value: string }) {
+  const match = /^(\d+)(.*)$/.exec(value);
+  const target = match ? Number(match[1]) : 0;
+  const suffix = match ? match[2] : "";
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => Math.round(v).toString());
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(count, target, { duration: 1.2, ease: "easeOut" });
+    return () => controls.stop();
+  }, [inView, count, target]);
+
+  if (!match) return <span>{value}</span>;
+
+  return (
+    <span ref={ref}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+}
 
 export function HeroSection() {
   const scrollToSection = (id: string) => {
@@ -43,32 +142,12 @@ export function HeroSection() {
 
       {/* Main content */}
       <div className="relative z-2 max-w-7xl mx-auto px-6 pt-32 pb-24">
-        {/* Status badge */}
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-2 h-2 rounded-full bg-cmyk-cyan shadow-[0_0_8px_var(--color-cmyk-cyan)]" />
-          <span className="text-cmyk-cyan text-xs tracking-[0.15em] font-medium">
-            AVAILABLE FOR WORK
-          </span>
-        </div>
-
         {/* Heading */}
         <div className="mb-6">
           <p className="text-gray-500 text-base tracking-[0.2em] font-medium mb-2">
             FRONTEND ENGINEER
           </p>
-          <h1
-            className="text-white font-bold leading-[1.05] tracking-tight"
-            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
-          >
-            Ben
-            <br />
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: "2px #ffffff" }}
-            >
-              Knize
-            </span>
-          </h1>
+          <HeroName />
         </div>
 
         <CmykRule className="w-[clamp(200px,30vw,400px)] mb-8" />
@@ -100,7 +179,7 @@ export function HeroSection() {
           {stats.map((stat) => (
             <div key={stat.label}>
               <p className="text-white font-bold text-3xl tracking-tight leading-none">
-                {stat.value}
+                <StatValue value={stat.value} />
               </p>
               <p className="text-gray-600 text-xs tracking-[0.1em] mt-1">
                 {stat.label.toUpperCase()}

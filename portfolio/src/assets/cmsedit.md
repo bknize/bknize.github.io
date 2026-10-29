@@ -3,7 +3,7 @@
 Glassman Technology, as a part of their software suite, provided a workflow to process CMS 1500 insurance claim forms. You may recognize these from your own insurance; it’s a standardized form and ripe for automation.
 
 
-This workflow processed about one million CMS 1500s per year by optimizing the forms for digestion and serving them to AI to transcribe. Now, if we optimistically assume 99% effectiveness in the AI transcription, we’re still looking at thousands erroneous transcriptions per year. And, since these forms are still filled out by humans, there is a significant human error element, as well. Most of the errors are mistranslations of handwriting, accidentally reading a line as a letter, that kind of thing.
+This workflow processed about one million CMS 1500s per year by optimizing the forms for digestion and serving them to AI to transcribe. Now, if we optimistically assume 99% effectiveness in the AI transcription, we’re still looking at thousands of erroneous transcriptions per year. And, since these forms are still filled out by humans, there is a significant human error element, as well. Most of the errors are mistranslations of handwriting, accidentally reading a line as a letter, that kind of thing.
 
 
 The processing includes a robust validation step, which fed into this feature: a UI for viewing and correcting thousands of yearly errors in human entry and AI transcription.

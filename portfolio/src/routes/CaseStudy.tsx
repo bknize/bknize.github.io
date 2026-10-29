@@ -1,18 +1,34 @@
 import { useParams, Link } from "react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { NavBar } from "../components/NavBar.tsx";
 import { FooterSection } from "../components/FooterSection.tsx";
 import { CmykRule } from "../components/CmykRule.tsx";
 import { GradientLine } from "../components/GradientLine.tsx";
 import { AnimatedTechPillList } from "../components/AnimatedTechPillList.tsx";
 import { MarkdownBody } from "../components/MarkdownBody.tsx";
-import { PageTransition } from "../components/PageTransition.tsx";
+import { PageTransition, WIPE_DURATION } from "../components/PageTransition.tsx";
+import { useIsFirstLoad } from "../lib/firstLoad.ts";
 import { getProjectBySlug, projects } from "../data/projects.ts";
 import { HOME_SECTION, type HomeLocationState } from "../nav.ts";
+
+const riseIn = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
+  const isFirstLoad = useIsFirstLoad();
+
+  // Watermark index drifts slower than the page so it reads as a back layer.
+  const { scrollY } = useScroll();
+  const watermarkY = useTransform(scrollY, [0, 600], [0, 140]);
 
   if (!project) {
     return (
@@ -47,23 +63,39 @@ export default function CaseStudy() {
 
       {/* Hero */}
       <section className="relative bg-cmyk-key pt-32 pb-20 overflow-hidden">
-        <div
+        <motion.div
           className="absolute -bottom-10 -right-5 text-[25vw] font-bold text-transparent leading-none select-none z-0 hidden md:block [-webkit-text-stroke:1px_rgba(255,255,255,0.04)] [letter-spacing:-0.05em]"
+          style={{ y: watermarkY }}
         >
           {project.index}
-        </div>
+        </motion.div>
 
-        <div className="relative z-1 max-w-5xl mx-auto px-6">
-          <Link
-            to="/"
-            state={{ scrollTo: HOME_SECTION.work } satisfies HomeLocationState}
-            className="inline-flex items-center gap-2 text-gray-500 text-sm tracking-widest uppercase mb-12 hover:text-white transition-colors no-underline"
-          >
-            <ArrowLeft size={14} />
-            Back to work
-          </Link>
+        {/* Staged reveal: on a route change, wait for the plate wipe to clear */}
+        <motion.div
+          className="relative z-1 max-w-5xl mx-auto px-6"
+          initial="hidden"
+          animate="show"
+          variants={{
+            show: {
+              transition: {
+                staggerChildren: 0.08,
+                delayChildren: isFirstLoad ? 0.1 : WIPE_DURATION,
+              },
+            },
+          }}
+        >
+          <motion.div variants={riseIn}>
+            <Link
+              to="/"
+              state={{ scrollTo: HOME_SECTION.work } satisfies HomeLocationState}
+              className="inline-flex items-center gap-2 text-gray-500 text-sm tracking-widest uppercase mb-12 hover:text-white transition-colors no-underline"
+            >
+              <ArrowLeft size={14} />
+              Back to work
+            </Link>
+          </motion.div>
 
-          <div className="flex items-center gap-2 mb-6">
+          <motion.div variants={riseIn} className="flex items-center gap-2 mb-6">
             <div
               className="w-2 h-2 rounded-full"
               style={{ backgroundColor: project.accent }}
@@ -74,30 +106,48 @@ export default function CaseStudy() {
             >
               {project.type.toUpperCase()}
             </span>
-          </div>
+          </motion.div>
 
-          <h1
+          <motion.h1
+            variants={riseIn}
             className="text-white font-bold tracking-tight leading-[1.05] mb-4"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
             {project.company}
-          </h1>
+          </motion.h1>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-8">
+          <motion.div
+            variants={riseIn}
+            className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-8"
+          >
             <span className="text-gray-400 text-[0.9rem]">{project.role}</span>
             <span className="text-gray-600 text-xs font-mono">
               {project.period}
             </span>
-          </div>
+          </motion.div>
 
-          <CmykRule className="w-[clamp(200px,30vw,400px)] mb-10" />
+          <motion.div
+            variants={{
+              hidden: { scaleX: 0 },
+              show: {
+                scaleX: 1,
+                transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+              },
+            }}
+            className="origin-left mb-10"
+          >
+            <CmykRule className="w-[clamp(200px,30vw,400px)]" />
+          </motion.div>
 
-          <p className="text-[#aaa] max-w-[640px] leading-relaxed text-lg">
+          <motion.p
+            variants={riseIn}
+            className="text-[#aaa] max-w-[640px] leading-relaxed text-lg"
+          >
             {project.description}
-          </p>
+          </motion.p>
 
           <AnimatedTechPillList tags={project.tags} className="mt-8" />
-        </div>
+        </motion.div>
       </section>
 
       {/* Content */}
