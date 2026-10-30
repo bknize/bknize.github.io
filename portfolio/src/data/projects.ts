@@ -29,7 +29,7 @@ export const projects: Project[] = [
       "Moved a UX team's AI agents off Figma and onto Storybook, with per-component contracts and a bootstrap that lets designers prototype in production code. Built 1.4M-record filtering and graphing UI streamed with DuckDB-WASM.",
     tags: ["React", "Angular", "Lit", "Storybook MCP", "Claude Code", "DuckDB-WASM", "Playwright"],
     accent: "#00AEEF",
-    index: "05",
+    index: "01",
     challenge:
       "Agents mapping Figma designs to the component library through Figma MCP produced drift, duplicated components, and hard-coded values where design tokens should have been. Every PR needed a human to un-teach the agent what the design file had taught it.",
     approach:
@@ -55,8 +55,8 @@ export const projects: Project[] = [
     description:
       "Built a complex workflow for resolving errors in CMS-1500 forms from users or AI agents. Implemented a Tailwind design system across multiple apps and multiple tech stacks.",
     tags: ["React", "TypeScript", "Tailwind", "Figma", "HTMX", "Django"],
-    accent: "#00AEEF",
-    index: "01",
+    accent: "#EC008C",
+    index: "02",
     challenge:
       "About a million CMS-1500 forms a year go through AI transcription. Even at an optimistic 99%, that's thousands of bad reads, on top of whatever the humans got wrong first. Someone has to fix them, and the fixing UI didn't exist yet.",
     approach:
@@ -81,8 +81,8 @@ export const projects: Project[] = [
     description:
       "Architected and launched a bespoke component library for Venminder's UI framework in partnership with the design team. Led the Frontend Guild, responsible for UI quality across all product teams.",
     tags: ["Aurelia", "TypeScript", "SASS", "Figma", "Storybook"],
-    accent: "#EC008C",
-    index: "02",
+    accent: "#FFF200",
+    index: "03",
     challenge:
       "Twelve-ish Aurelia components, undocumented, untyped, and a select with thirty bindable properties. Nobody wanted to use them, so every team rebuilt its own. Aurelia also doesn't scope CSS, so styles leaked everywhere.",
     approach:
@@ -107,8 +107,8 @@ export const projects: Project[] = [
     description:
       "Built the state layer, side-effects library, and 400k-record filtering for Venminder's questionnaire CMS, on Aurelia, with polling instead of sockets.",
     tags: ["Aurelia", "TypeScript", "Redux", "RxJS", "Chart.js", "State Management"],
-    accent: "#FFF200",
-    index: "03",
+    accent: "#ffffff",
+    index: "04",
     challenge:
       "Aurelia's store is Redux-flavored but bare: no slices, no effects, plenty of prop drilling and ad-hoc patterns. Then product asked for Google-Docs-style concurrent editing and bulk operations on up to 400,000 records, for clients whose IT departments block web sockets.",
     approach:
@@ -134,7 +134,7 @@ export const projects: Project[] = [
       "Built hybrid mobile and tablet apps for Caterpillar — an Ionic launcher for machine simulation programs and a PWA for assessing remote job sites — alongside data-dense Angular interfaces for industrial equipment management.",
     tags: ["Angular", "Ionic", "PWA", "Vue", "TypeScript", "NgRx"],
     accent: "#ffffff",
-    index: "04",
+    index: "05",
     challenge:
       "A service-cost tool for Caterpillar machinery: a tree of parts, labor, and sub-parts with no known depth and no known size, used by the same people for eight hours a day. The jQuery version loaded everything at once and worked in the sense that it didn't immediately crash.",
     approach:
